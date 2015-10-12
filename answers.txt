@@ -1,0 +1,26 @@
+Explain what an interface is and why you would use one
+Vamsi:
+An interface is a contract.
+An interface is an empty shell, there are only the signatures of the methods, which implies that the methods do not have a body. 
+Interfaces are the best way to maintain well decoupled constructs.
+When writing tests, we will find that concrete classes will not work in the test environment.
+Example: we want to test a class that depends on a Data Access Service class. 
+If that class is talking to a web service, or database ,our unit test will not run in the test environment. 
+Use an Interface for Data Access Service and Mock that interface so we can test the class as a unit.
+Implementing an interface consumes very little CPU, because it is not a class and therefore there is no expensive look-up to do. 
+
+Explain the ways in which you could use the static keyword.
+
+Vamsi:
+Whenever we write a function or declare a variable, it doesn’t create instance in a memory until we create object of class. 
+But if we declare any function or variable with static modifier, it directly create instance in a memory and acts globally. 
+The static modifier doesn’t reference with any object. static variable share the value among all instances of the class.
+Variables declared static are commonly shared across all instances of a class. 
+When we create multiple instances of a class the static field is shared across all of them.
+
+
+Explain when you would use checked and unchecked exceptions.
+
+Vamsi:
+In C# language we have two types of execution contexts checked and unchecked and this context depends on compiler most of the cases it’s unchecked.
+In Unchecked context arithmetic exceptions are ignored and result will be truncated. 
