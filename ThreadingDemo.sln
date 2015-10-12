@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThreadingDemo", "ThreadingDemo\ThreadingDemo.csproj", "{6E7D2CAF-19C6-41EA-AA26-E79FE499C281}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommuterSystem", "CommuterSystem\CommuterSystem.csproj", "{E1AE8C42-CAA4-430F-8B76-9BCCF9398058}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6E7D2CAF-19C6-41EA-AA26-E79FE499C281}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E7D2CAF-19C6-41EA-AA26-E79FE499C281}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E7D2CAF-19C6-41EA-AA26-E79FE499C281}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E7D2CAF-19C6-41EA-AA26-E79FE499C281}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1AE8C42-CAA4-430F-8B76-9BCCF9398058}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1AE8C42-CAA4-430F-8B76-9BCCF9398058}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1AE8C42-CAA4-430F-8B76-9BCCF9398058}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1AE8C42-CAA4-430F-8B76-9BCCF9398058}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Urban Commuter Information</title>
+    <meta charset="utf-8" />
+    <script src="Scripts/jquery-2.1.4.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="Content/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="Content/bootstrap-theme.min.css" />
+    <script src="Scripts/commutesystem.js"></script>
+</head>
+<body>
+    <form class="form-horizontal">
+        <div class="container container-fluid">
+            <div class="table-responsive">
+                <label>
+                    Service Status
+                </label>
+                <div>
+                    <input type="button" class="btn btn-primary" id="btnServiceStatus" value="Get Service Status" />
+                </div><br/>
+                <div id="showlinesdata">
+                </div>
+            </div>
+        </div>
+        <div class="container container-fluid">
+            <input type="button" class="btn btn-primary" id="btnGetLines" value="Get Location of Any Train" />
+            <br/>
+            <div id="divlines" class="container container-fluid">
+                <label>
+                    Location of Any train
+                </label>
+                <select id="ddlLines"><option value="-1">Select Line</option></select>
+            </div>
+        </div>
+        
+        <div id="divtrains" class="container container-fluid">
+
+        </div>
+
+        <br/><br />
+
+        <div id="stationdiv" class="container container-fluid">
+            <input type="button" class="btn btn-primary" id="btnGetStations" value="Get Stations" />
+        </div>
+
+        <div id="divstations" class="container container-fluid">
+            <label>
+                Select Stations
+            </label>
+            <select id="ddlStations"><option value="-1">Select Line</option></select>
+        </div>
+
+        <div id="divnexttrain" class="container container-fluid">
+            <label id="lblNextTrain">
+                
+            </label>
+        </div>
+
+    </form>
+
+</body>
+</html>
