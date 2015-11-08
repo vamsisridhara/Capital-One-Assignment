@@ -337,7 +337,5 @@ namespace CommuterSystem.Models
             get;
             set;
         }
-
-
     }
 }

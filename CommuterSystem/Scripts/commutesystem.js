@@ -87,7 +87,7 @@
                     if (data && data.length > 0) {
                         $("#divtrains").empty();
                         $.each(data, function (key, val) {
-                            var table = $('<table style="width:50%" class="table table-bordered"><tr><th>Service Id</th><th>Station Name</th></tr></thead></table>');
+                            var table = $('<table style="width:50%" class="table table-bordered"><tr><th>Service Id</th><th>Station Name</th></tr></table>');
                             for (count = 0; count < data.length; count++) {
                                 var tr = $("<tr>");
                                 var td = $("<td>").appendTo(tr);
