@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThreadingDemo", "ThreadingD
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommuterSystem", "CommuterSystem\CommuterSystem.csproj", "{E1AE8C42-CAA4-430F-8B76-9BCCF9398058}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GFFIAdmin", "GFFIAdmin\GFFIAdmin.csproj", "{3FAA7DA8-2289-4967-940E-1429E9563157}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{E1AE8C42-CAA4-430F-8B76-9BCCF9398058}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E1AE8C42-CAA4-430F-8B76-9BCCF9398058}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E1AE8C42-CAA4-430F-8B76-9BCCF9398058}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3FAA7DA8-2289-4967-940E-1429E9563157}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FAA7DA8-2289-4967-940E-1429E9563157}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FAA7DA8-2289-4967-940E-1429E9563157}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FAA7DA8-2289-4967-940E-1429E9563157}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

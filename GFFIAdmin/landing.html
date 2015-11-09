@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html ng-app="gffiAdminApp">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+    </title>
+    <link rel="stylesheet" href="Content/bootstrap.min.css" />
+    <link rel="stylesheet" href="Content/bootstrap-theme.min.css" />
+    <script src="Scripts/jquery-2.1.4.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="Scripts/jquery.validate.min.js"></script>
+    <script src="Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="Scripts/angular.min.js"></script>
+    <script src="Scripts/app.js"></script>
+    <script src="Scripts/gffiAdminService.js"></script>
+    <script src="Scripts/gffiAdminController.js"></script>
+
+</head>
+<body ng-controller="gffiAdminController">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar">Hme</span>
+                    <span class="icon-bar">Link</span>
+                    <span class="icon-bar">TEst</span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="landing.html">Home</a></li>
+                    <li><a href="landing.html">Home</a></li>
+                    <li><a href="landing.html">Home</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <br />
+    <br /><br />
+    <div class="container body-content">
+        <div class="form-horizontal">
+            <div class="form-group">
+                <label class="control-label col-md-2">Line Of Business </label>
+                <div class="col-md-2">
+                    <select id="ddlLines" class="form-control col-md-2"
+                            ng-model="selectedLob" ng-change="getSIValue(selectedLob)">
+                        <option ng-repeat="lob in lobs"
+                                value="{{lob}}">
+                            {{lob}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Simplified Interface</label>
+                <div class="col-md-2">
+                    <label class="control-label col-md-2">
+                        {{ sivalue }}
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Driver Name</label>
+                <div class="col-md-2">
+                    <input class="form-control  col-md-2" ng-model="driver.driverName" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-2">Address</label>
+                <div class="col-md-2">
+                    <input class="form-control  col-md-2" ng-model="driver.driverAddress" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-2">City</label>
+                <div class="col-md-2">
+                    <input class="form-control col-md-2" ng-model="driver.city" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-2"></div>
+                <div class="col-md-2">
+                    <button type="submit" ng-click="addDriver(driver)" class="btn btn-primary">+</button>
+                </div>
+            </div>
+
+            <select id="dd" class="form-control col-md-2">
+                <option ng-repeat="d in drivers"
+                        value="{{d}}">
+                    {{d}}
+                </option>
+            </select>
+
+
+
+
+        </div>
+
+    </div>
+
+</body>
+</html>
