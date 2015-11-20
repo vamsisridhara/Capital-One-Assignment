@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html ng-app="productManagement">
+<head>
+    <title>Acme Product Management</title>
+	<meta charset="utf-8" />
+    <script src="Scripts/angular.min.js"></script>
+    <script src="app/app.js"></script>
+    <script>
+        (function () {
+            var app = angular.module("productManagement");
+            
+
+        }());
+    </script>
+</head>
+<body>
+    <table ng-controller="productCtrl">
+        <thead>
+            <tr>
+                <td>
+                    Image
+                </td>
+                <td>
+                    Product
+                </td>
+                <td>
+                    Code
+                </td>
+                <td>
+                    Available
+                </td>
+                <td>Price</td>
+            </tr>
+            <tr ng-repeat="product in products">
+                <td>
+                    <img src="{{ product.imageURL}}" title="{{ product.productName }}" />
+                </td>
+                <td>
+                    {{ product.productName }}
+                </td>
+                <td>
+                    {{ product.productCode }}
+                </td>
+                <td>
+                    {{ product.releaseDate }}
+                </td>
+                <td>
+                    {{ product.price | currency }}
+                </td>
+            </tr>
+        </thead>
+    </table>
+</body>
+</html>

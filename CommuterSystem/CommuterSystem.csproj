@@ -20,6 +20,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -215,6 +216,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="angcommute.html" />
+    <Content Include="app\app.js" />
+    <Content Include="app\products\productListCtrl.js" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="commute.html" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -250,6 +253,7 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
+    <Content Include="index.html" />
     <Content Include="Scripts\angular-mocks.js" />
     <Content Include="Scripts\angular-resource.min.js" />
     <Content Include="Scripts\angular-route.min.js" />
@@ -288,7 +292,9 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="app\prices\" />
     <Folder Include="App_Data\" />
+    <Folder Include="common\services\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
