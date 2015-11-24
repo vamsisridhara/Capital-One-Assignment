@@ -58,6 +58,6 @@ C:\Users\Vamsi\Documents\GitHub\Assignments\Capital-One-Assignment\GFFIAdmin\bin
 C:\Users\Vamsi\Documents\GitHub\Assignments\Capital-One-Assignment\GFFIAdmin\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\Vamsi\Documents\GitHub\Assignments\Capital-One-Assignment\GFFIAdmin\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\Vamsi\Documents\GitHub\Assignments\Capital-One-Assignment\GFFIAdmin\bin\System.Web.Http.Owin.xml
-C:\Users\Vamsi\Documents\GitHub\Assignments\Capital-One-Assignment\GFFIAdmin\obj\Debug\GFFIAdmin.csprojResolveAssemblyReference.cache
 C:\Users\Vamsi\Documents\GitHub\Assignments\Capital-One-Assignment\GFFIAdmin\obj\Debug\GFFIAdmin.dll
 C:\Users\Vamsi\Documents\GitHub\Assignments\Capital-One-Assignment\GFFIAdmin\obj\Debug\GFFIAdmin.pdb
+C:\Users\Vamsi\Documents\GitHub\Assignments\Capital-One-Assignment\GFFIAdmin\obj\Debug\GFFIAdmin.csprojResolveAssemblyReference.cache

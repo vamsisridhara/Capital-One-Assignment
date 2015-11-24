@@ -1,9 +1,5 @@
 ﻿using GFFIAdmin.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 
 namespace GFFIAdmin.Controllers
@@ -11,11 +7,35 @@ namespace GFFIAdmin.Controllers
     [RoutePrefix("gffiadmin")]
     public class GffiAdminController : ApiController
     {
+        private ILobRepository ilob = null;
+        private IPortfolioRepository iport = null;
+        public GffiAdminController()
+        {
+            ilob = new LobRepository();
+            iport = new PortfolioRepository();
+        }
+
         [Route("getlob")]
+        [HttpGet]
         public List<LineofBusiness> getLob()
         {
-            ILobRepository repo = new LobRepository();
-            return repo.getLineofBusiness();
+            return ilob.getLineofBusiness();
         }
+
+        [Route("getportfolios")]
+        [HttpGet]
+        public List<Portfolio> getportfolios()
+        {
+            return iport.getPortfolios();
+        }
+
+        [Route("deleteportfolio/{id}")]
+        [HttpDelete]
+        public List<Portfolio>  deletePortfolio(int id)
+        {
+            return iport.DeletePortfolio(id);
+        }
+
+
     }
 }

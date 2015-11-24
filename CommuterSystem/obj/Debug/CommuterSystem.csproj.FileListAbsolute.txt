@@ -122,4 +122,3 @@ C:\Users\Vamsi\Documents\GitHub\Assignments\Capital-One-Assignment\CommuterSyste
 C:\Users\Vamsi\Documents\GitHub\Assignments\Capital-One-Assignment\CommuterSystem\bin\System.Web.Http.Owin.xml
 C:\Users\Vamsi\Documents\GitHub\Assignments\Capital-One-Assignment\CommuterSystem\obj\Debug\CommuterSystem.dll
 C:\Users\Vamsi\Documents\GitHub\Assignments\Capital-One-Assignment\CommuterSystem\obj\Debug\CommuterSystem.pdb
-C:\Users\Vamsi\Documents\GitHub\Assignments\Capital-One-Assignment\CommuterSystem\obj\Debug\CommuterSystem.csprojResolveAssemblyReference.cache

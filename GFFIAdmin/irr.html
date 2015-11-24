@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html ng-app="gffiAdminApp">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+    </title>
+    <link rel="stylesheet" href="Content/bootstrap.min.css" />
+    <link rel="stylesheet" href="Content/bootstrap-theme.min.css" />
+    <style>
+        .spinner {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            margin-left: -50px; /* half width of the spinner gif */
+            margin-top: -50px; /* half height of the spinner gif */
+            text-align: center;
+            z-index: 1234;
+            overflow: auto;
+            width: 100px; /* width of the spinner gif */
+            height: 102px; /*hight of the spinner gif +2px to fix IE8 issue */
+        }
+    </style>
+</head>
+<body ng-controller="irrController">
+    <div id="spinner" class="spinner" style="display: none;">
+        <img id="img-spinner" src="images/ajax-loader.gif" alt="Loading" />
+    </div>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar">Hme</span>
+                    <span class="icon-bar">Link</span>
+                    <span class="icon-bar">TEst</span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="landing.html">Home</a></li>
+                    <li><a href="landing.html">Home</a></li>
+                    <li><a href="landing.html">Home</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="jumbotron" ng-if="ports.length > 0">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="panel-heading">List of Portfolios</div>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Description</th>
+                                <th>Created Date</th>
+                                <th>CDate</th>
+                                <th>Data Lock</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="port in ports">
+                                <td>
+                                    {{ port.Name}}
+                                </td>
+                                <td>
+                                    {{ port.Description}}
+                                </td>
+                                <td>
+                                    {{ port.CreatedDate}}
+                                </td>
+                                <td>
+                                    {{ port.CDate}}
+                                </td>
+                                <td>
+                                    {{ port.DataLock}}
+                                </td>
+                                <td>
+                                    <button type="button" ng-click="deletePort(port.ID)" class="btn btn-primary">
+                                        Delete
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script src="Scripts/jquery-2.1.4.min.js"></script>
+<script src="Scripts/bootstrap.min.js"></script>
+<script src="Scripts/jquery.validate.min.js"></script>
+<script src="Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="Scripts/angular.min.js"></script>
+<script src="Scripts/app.js"></script>
+<script src="Scripts/gffiAdminService.js"></script>
+<script src="Scripts/irrController.js"></script>

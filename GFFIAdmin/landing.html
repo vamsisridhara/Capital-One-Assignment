@@ -7,17 +7,26 @@
     </title>
     <link rel="stylesheet" href="Content/bootstrap.min.css" />
     <link rel="stylesheet" href="Content/bootstrap-theme.min.css" />
-    <script src="Scripts/jquery-2.1.4.min.js"></script>
-    <script src="Scripts/bootstrap.min.js"></script>
-    <script src="Scripts/jquery.validate.min.js"></script>
-    <script src="Scripts/jquery.validate.unobtrusive.min.js"></script>
-    <script src="Scripts/angular.min.js"></script>
-    <script src="Scripts/app.js"></script>
-    <script src="Scripts/gffiAdminService.js"></script>
-    <script src="Scripts/gffiAdminController.js"></script>
+    <style>
+        .spinner {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            margin-left: -50px; /* half width of the spinner gif */
+            margin-top: -50px; /* half height of the spinner gif */
+            text-align: center;
+            z-index: 1234;
+            overflow: auto;
+            width: 100px; /* width of the spinner gif */
+            height: 102px; /*hight of the spinner gif +2px to fix IE8 issue */
+        }
+    </style>
 
 </head>
 <body ng-controller="gffiAdminController">
+    <div id="spinner" class="spinner" style="display: none;">
+        <img id="img-spinner" src="images/ajax-loader.gif" alt="Loading" />
+    </div>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -38,69 +47,112 @@
     </div>
     <br />
     <br /><br />
-    <div class="container body-content">
-        <div class="form-horizontal">
+    <div class="container" ng-if="lobs.length > 0">
+        <div class="container-fluid">
             <div class="form-group">
-                <label class="control-label col-md-2">Line Of Business </label>
-                <div class="col-md-2">
-                    <select id="ddlLines" class="form-control col-md-2"
-                            ng-model="selectedLob" ng-change="getSIValue(selectedLob)">
-                        <option ng-repeat="lob in lobs"
-                                value="{{lob}}">
-                            {{lob}}
-                        </option>
-                    </select>
+                <div class="row">
+                    <div class="aleft col-sm-6">
+                        <label class="control-label">
+                            Line Of Business
+                            <select id="ddlLines" class="form-control"
+                                    ng-model="selectedLob" ng-change="getSIValue(selectedLob)">
+                                <option ng-repeat="lob in lobs"
+                                        value="{{lob}}">
+                                    {{lob}}
+                                </option>
+                            </select>
+                        </label><br />
+                        <label class="control-label">Simplified Interface</label><br />
+                        <label class="control-label">
+                            {{ sivalue }}
+                        </label><br/>
+                        <label class="control-label">
+                            bsm framework
+                            <select id="selbsm" class="form-control">
+                                <option>1</option>
+                                <option>1</option>
+                            </select>
+                        </label><br/>
+                        <label class="control-label">
+                            database
+                            <select id="seldb" class="form-control">
+                                <option>PADFDF</option>
+                                <option>PADFDF</option>
+                            </select>
+                        </label>
+
+                    </div>
+                    <div class="aleft col-sm-6">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <td>
+                                        ID
+                                    </td>
+                                    <td>
+                                        Name
+                                    </td>
+                                    <td>Desc</td>
+                                    <td>Price</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>1</td>
+                                    <td>1</td>
+                                    <td>1</td>
+                                    <td><button type="button" class="btn btn-primary">Delete</button> </td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>1</td>
+                                    <td>1</td>
+                                    <td>1</td>
+                                    <td><button type="button" class="btn btn-primary">Delete</button> </td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>1</td>
+                                    <td>1</td>
+                                    <td>1</td>
+                                    <td><button type="button" class="btn btn-primary">Delete</button> </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
+        </div>
 
-            <div class="form-group">
-                <label class="control-label col-md-2">Simplified Interface</label>
-                <div class="col-md-2">
-                    <label class="control-label col-md-2">
-                        {{ sivalue }}
-                    </label>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="aleft col-sm-6">
+                    <div class="form-group">
+                       
+                    </div>
+                    <div class="form-group">
+                        
+                    </div>
                 </div>
             </div>
-
-            <div class="form-group">
-                <label class="control-label col-md-2">Driver Name</label>
-                <div class="col-md-2">
-                    <input class="form-control  col-md-2" ng-model="driver.driverName" />
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-md-2">Address</label>
-                <div class="col-md-2">
-                    <input class="form-control  col-md-2" ng-model="driver.driverAddress" />
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-md-2">City</label>
-                <div class="col-md-2">
-                    <input class="form-control col-md-2" ng-model="driver.city" />
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="col-md-2"></div>
-                <div class="col-md-2">
-                    <button type="submit" ng-click="addDriver(driver)" class="btn btn-primary">+</button>
-                </div>
-            </div>
-
-            <select id="dd" class="form-control col-md-2">
-                <option ng-repeat="d in drivers"
-                        value="{{d}}">
-                    {{d}}
-                </option>
-            </select>
-
-
-
 
         </div>
 
     </div>
 
+
+
+
+
+
 </body>
 </html>
+<script src="Scripts/jquery-2.1.4.min.js"></script>
+<script src="Scripts/bootstrap.min.js"></script>
+<script src="Scripts/jquery.validate.min.js"></script>
+<script src="Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="Scripts/angular.min.js"></script>
+<script src="Scripts/app.js"></script>
+<script src="Scripts/gffiAdminService.js"></script>
+<script src="Scripts/gffiAdminController.js"></script>
