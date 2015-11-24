@@ -39,7 +39,7 @@
                         <div class="form-group" ng-class="{ 'has-error': userForm.service_id.$touched && userForm.service_id.$invalid }">
                             <label class="control-label">Select a database</label>
                             <select name="service_id" class="form-control col-md-3"
-                                    ng-model="ServiceID"
+                                    ng-model="uf.serviceid"
                                     ng-options="service.ServiceID as service.ServiceName for service in main.services"
                                     required>
                                 <option value="">Select Service</option>
@@ -52,7 +52,7 @@
                         <div class="form-group" ng-class="{ 'has-error': userForm.sourceBranch.$touched && userForm.sourceBranch.$invalid }">
                             <label class="control-label">Source Branch</label>
                             <input type="text" name="sourceBranch" class="form-control"
-                                   ng-model="main.sourceBranch"
+                                   ng-model="uf.sourceBranch"
                                    ng-minlength="5"
                                    ng-maxlength="10"
                                    required>
@@ -67,7 +67,7 @@
                         <div class="form-group" ng-class="{ 'has-error': userForm.email.$touched && userForm.email.$invalid }">
                             <label class="control-label">Email</label>
                             <input type="email" name="email" class="form-control"
-                                   ng-model="main.email"
+                                   ng-model="uf.email"
                                    ng-minlength="5"
                                    ng-maxlength="20"
                                    required>
@@ -83,7 +83,8 @@
                         </div>
 
                         <div class="form-group">
-                            <button type="submit" ng-disabled="userForm.$invalid" class="btn btn-primary">Submit</button>
+                            <button type="button" ng-click="main.createBranch(uf)" ng-disabled="userForm.$invalid" 
+                                    class="btn btn-primary">Submit</button>
                         </div>
                     </div>
                 </div>
@@ -103,14 +104,17 @@
     (function () {
         "use strict";
         var app = angular.module('app', ['ngMessages']);
-        app.controller('MainCtrl', MainCtrl);
-        function MainCtrl() {
+        app.controller('MainCtrl','$http', MainCtrl);
+        function MainCtrl($http) {
             var vm = this;
             vm.services = [
                 { ServiceID: 1, ServiceName: 'Service1' },
                 { ServiceID: 2, ServiceName: 'Service2' },
                 { ServiceID: 3, ServiceName: 'Service3' }
             ];
+            vm.createBranch = function (branch) {
+                
+            };
         }
     }());
 
