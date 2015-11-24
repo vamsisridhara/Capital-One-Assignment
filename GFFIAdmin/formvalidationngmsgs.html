@@ -1,0 +1,118 @@
+﻿<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <meta charset="utf-8">
+    <title>ngMessages Demo</title>
+    <!-- CSS -->
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/bootstrap-theme.min.css" rel="stylesheet" />
+    <style>
+        body {
+            padding-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar">Hme</span>
+                    <span class="icon-bar">Link</span>
+                    <span class="icon-bar">TEst</span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="landing.html">Home</a></li>
+                    <li><a href="landing.html">Home</a></li>
+                    <li><a href="landing.html">Home</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <form name="userForm" novalidate>
+        <div class="">
+            <div class="container" ng-controller="MainCtrl as main">
+                <div class="row">
+                    <div class="col-md-3 col-md-offset-3">
+                        <div class="form-group" ng-class="{ 'has-error': userForm.service_id.$touched && userForm.service_id.$invalid }">
+                            <label class="control-label">Select a database</label>
+                            <select name="service_id" class="form-control col-md-3"
+                                    ng-model="ServiceID"
+                                    ng-options="service.ServiceID as service.ServiceName for service in main.services"
+                                    required>
+                                <option value="">Select Service</option>
+                            </select>
+                            <div class="help-block" ng-messages="userForm.service_id.$error" ng-if="userForm.service_id.$touched">
+                                <p ng-message="required">Database is required.</p>
+                            </div>
+                        </div>
+
+                        <div class="form-group" ng-class="{ 'has-error': userForm.sourceBranch.$touched && userForm.sourceBranch.$invalid }">
+                            <label class="control-label">Source Branch</label>
+                            <input type="text" name="sourceBranch" class="form-control"
+                                   ng-model="main.sourceBranch"
+                                   ng-minlength="5"
+                                   ng-maxlength="10"
+                                   required>
+
+                            <div class="help-block" ng-messages="userForm.sourceBranch.$error" ng-if="userForm.sourceBranch.$touched">
+                                <p ng-message="minlength">Your name is too short.</p>
+                                <p ng-message="maxlength">Your name is too long.</p>
+                                <p ng-message="required">Source Branch is required.</p>
+                            </div>
+                        </div>
+
+                        <div class="form-group" ng-class="{ 'has-error': userForm.email.$touched && userForm.email.$invalid }">
+                            <label class="control-label">Email</label>
+                            <input type="email" name="email" class="form-control"
+                                   ng-model="main.email"
+                                   ng-minlength="5"
+                                   ng-maxlength="20"
+                                   required>
+
+                            <div class="help-block" ng-messages="userForm.email.$error" ng-if="userForm.email.$touched">
+                                <p ng-message="required">This field is required</p>
+                                <p ng-message="minlength">This field is too short</p>
+                                <p ng-message="maxlength">This field is too long</p>
+                                <p ng-message="required">This field is required</p>
+                                <p ng-message="email">This needs to be a valid email</p>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" ng-disabled="userForm.$invalid" class="btn btn-primary">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!--<pre>userForm.name.$error = {{ userForm.name.$error | json }}</pre>-->
+
+    </form>
+
+
+</body>
+</html>
+<script src="Scripts/angular.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-messages.js"></script>
+<script>
+    (function () {
+        "use strict";
+        var app = angular.module('app', ['ngMessages']);
+        app.controller('MainCtrl', MainCtrl);
+        function MainCtrl() {
+            var vm = this;
+            vm.services = [
+                { ServiceID: 1, ServiceName: 'Service1' },
+                { ServiceID: 2, ServiceName: 'Service2' },
+                { ServiceID: 3, ServiceName: 'Service3' }
+            ];
+        }
+    }());
+
+
+</script>

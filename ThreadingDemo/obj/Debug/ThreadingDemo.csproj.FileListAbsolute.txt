@@ -11,3 +11,4 @@ C:\Users\Vamsi\Documents\GitHub\Assignments\Capital-One-Assignment\ThreadingDemo
 C:\Users\Vamsi\Documents\GitHub\Assignments\Capital-One-Assignment\ThreadingDemo\obj\Debug\ThreadingDemo.pdb
 C:\Users\Vamsi\Documents\GitHub\Assignments\Capital-One-Assignment\ThreadingDemo\bin\Debug\ThreadingDemo.exe
 C:\Users\Vamsi\Documents\GitHub\Assignments\Capital-One-Assignment\ThreadingDemo\bin\Debug\ThreadingDemo.pdb
+C:\Users\Vamsi\Documents\GitHub\Assignments\Capital-One-Assignment\ThreadingDemo\obj\Debug\ThreadingDemo.csprojResolveAssemblyReference.cache
