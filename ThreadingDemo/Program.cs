@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Autofac;
+using AutoMapper;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -8,17 +11,85 @@ using System.Threading.Tasks;
 
 namespace ThreadingDemo
 {
+    public class OrdersVM
+    {
+        public int OrderID { get; set; }
+        public string CustomerID { get; set; }
+        public string ShipName { get; set; }
+        public string ShipAddress { get; set; }
+        public string ShipCity { get; set; }
+        public string ShipRegion { get; set; }
+        public string ShipPostalCode { get; set; }
+        public string ShipCountry { get; set; }
+    }
+
+    public static class GenericMap<T,D>
+    {
+        public static List<D> MaptoDTO(T source, D destination , DbContext dbcontext, IQueryable<T> order)
+        {
+            Mapper.CreateMap<T, D>();
+            var dbcontext = new NorthwindEntities();
+            var ordervmlist = new List<D>();
+            if (order.Any())
+            {
+                ordervmlist = Mapper.Map<List<T>, List<D>>(order.ToList());
+            }
+
+        }
+    }
+
     class Program
     {
+        public static void WriteDate()
+        {
+            // Create the scope, resolve your IDateWriter,
+            // use it, then dispose of the scope.
+            using (var scope = Container.BeginLifetimeScope())
+            {
+                var writer = scope.Resolve<IDateWriter>();
+                writer.WriteDate();
+            }
+        }
+
+        private static IContainer Container { get; set; }
+
         static void Main(string[] args)
         {
-            //using threading
+            //Autofacinitialize();
+            //ThreadingInvoke();
+            automapinitialize();
+            Console.Read();
+            
+        }
+
+        private static void automapinitialize()
+        {
+            Mapper.CreateMap<Order,OrdersVM>();
+            var context = new NorthwindEntities();
+            var orderList = from ord in context.Orders select ord;
+            var ordervmlist = new List<OrdersVM>();
+            if (orderList.Any())
+            {
+                ordervmlist = Mapper.Map<List<Order>, List<OrdersVM>>(orderList.ToList());
+            }
+        }
+
+        private static void ThreadingInvoke()
+        {
             MultiThreadTest threadTest = new MultiThreadTest();
             threadTest.proessMultithreading();
 
-            //using async and Task
             threadTest.ProcessWriteMult();
             Console.Read();
+        }
+
+        private static void Autofacinitialize()
+        {
+            var builder = new ContainerBuilder();
+            builder.RegisterType<ConsoleOutput>().As<IOutput>();
+            builder.RegisterType<TodayWriter>().As<IDateWriter>();
+            Container = builder.Build();
+            WriteDate();
         }
     }
     //create a class 

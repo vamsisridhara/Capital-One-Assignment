@@ -1,0 +1,46 @@
+﻿@model  List<GFFIAdmin.Models.CustomerAutofac>
+
+@{
+    ViewBag.Title = "Index";
+}
+<h2>Index</h2>
+
+@foreach (var customer in Model)
+{
+    <fieldset>
+        <legend>Customer</legend>
+
+        <div class="display-label">
+            @Html.DisplayNameFor(model => customer.CustomerId)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => customer.CustomerId)
+        </div>
+        <div class="display-label">
+            @Html.DisplayNameFor(model => customer.CustomerName)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => customer.CustomerName)
+        </div>
+        <div class="display-label">
+            @Html.DisplayNameFor(model => customer.CustomerAddress)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => customer.CustomerAddress)
+        </div>
+        <div class="display-label">
+            @Html.DisplayNameFor(model => customer.CustomerPhoneNumber)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => customer.CustomerPhoneNumber)
+        </div>
+
+        <div class="display-label">
+            @Html.DisplayNameFor(model => customer.CustomerEmail)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => customer.CustomerEmail)
+        </div>
+    </fieldset>
+    <br />
+}

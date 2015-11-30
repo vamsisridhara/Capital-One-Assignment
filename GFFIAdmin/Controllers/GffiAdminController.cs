@@ -9,10 +9,10 @@ namespace GFFIAdmin.Controllers
     {
         private ILobRepository ilob = null;
         private IPortfolioRepository iport = null;
-        public GffiAdminController()
+        public GffiAdminController(ILobRepository _ilob , IPortfolioRepository _iport)
         {
-            ilob = new LobRepository();
-            iport = new PortfolioRepository();
+            ilob = _ilob;
+            iport = _iport;
         }
 
         [Route("getlob")]
