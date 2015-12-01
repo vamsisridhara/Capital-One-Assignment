@@ -344,6 +344,8 @@
     <Content Include="formvalidationngmsgs.html" />
     <Content Include="irr.html" />
     <Content Include="landing.html" />
+    <Content Include="Menus\large_dropdown_menu.html" />
+    <Content Include="Menus\MegaMenu.html" />
     <Content Include="messages.html" />
     <Content Include="progressbar.html" />
     <Content Include="progressbar2.html" />
