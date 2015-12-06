@@ -343,6 +343,7 @@
     <Content Include="images\ajax-loader.gif" />
     <Content Include="formvalidationngmsgs.html" />
     <Content Include="irr.html" />
+    <Content Include="jsonedit.html" />
     <Content Include="landing.html" />
     <Content Include="Menus\large_dropdown_menu.html" />
     <Content Include="Menus\MegaMenu.html" />
@@ -359,6 +360,7 @@
       <DependentUpon>Nwind.edmx</DependentUpon>
       <LastGenOutput>Nwind.cs</LastGenOutput>
     </Content>
+    <Content Include="Scripts\angular-messages.js" />
     <Content Include="Scripts\angular-mocks.js" />
     <Content Include="Scripts\angular-resource.min.js" />
     <Content Include="Scripts\angular-route.min.js" />
