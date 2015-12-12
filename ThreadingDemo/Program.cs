@@ -2,7 +2,9 @@
 using AutoMapper;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -11,6 +13,13 @@ using System.Threading.Tasks;
 
 namespace ThreadingDemo
 {
+    public class Product
+    {
+        public String Name { get; set; }
+        public Int32 ProductId { get; set; }
+        public Decimal Cost { get; set; }
+        public Int32 Quantity { get; set; }
+    }
     public class OrdersVM
     {
         public int OrderID { get; set; }
@@ -23,20 +32,20 @@ namespace ThreadingDemo
         public string ShipCountry { get; set; }
     }
 
-    public static class GenericMap<T,D>
-    {
-        public static List<D> MaptoDTO(T source, D destination , DbContext dbcontext, IQueryable<T> order)
-        {
-            Mapper.CreateMap<T, D>();
-            var dbcontext = new NorthwindEntities();
-            var ordervmlist = new List<D>();
-            if (order.Any())
-            {
-                ordervmlist = Mapper.Map<List<T>, List<D>>(order.ToList());
-            }
+    //public static class GenericMap<T,D>
+    //{
+    //    public static List<D> MaptoDTO(T source, D destination , DbContext dbcontext, IQueryable<T> order)
+    //    {
+    //        Mapper.CreateMap<T, D>();
+    //        var dbcontext = new NorthwindEntities();
+    //        var ordervmlist = new List<D>();
+    //        if (order.Any())
+    //        {
+    //            ordervmlist = Mapper.Map<List<T>, List<D>>(order.ToList());
+    //        }
 
-        }
-    }
+    //    }
+    //}
 
     class Program
     {
@@ -57,14 +66,85 @@ namespace ThreadingDemo
         {
             //Autofacinitialize();
             //ThreadingInvoke();
-            automapinitialize();
+            IList<Product> cartlist = new List<Product>()
+            {
+                new Product() { ProductId =1, Name= "Mens Watches" , Cost = 500.45m , Quantity =1 },
+                new Product() { ProductId =2, Name= "Perfumes" , Cost = 500.45m , Quantity =2},
+                new Product() { ProductId =3, Name= "Clothes" , Cost = 500.45m , Quantity =3},
+                new Product() { ProductId =4, Name= "Ladies Watches" , Cost = 500.45m , Quantity =4 },
+            };
+            IList<Product> recommendedList = new List<Product>()
+            {
+                new Product() { ProductId =1, Name= "Mens Watches" , Cost = 500.45m , Quantity =1 },
+                new Product() { ProductId =2, Name= "Perfumes" , Cost = 500.45m , Quantity =1 },
+                new Product() { ProductId =3, Name= "Clothes" , Cost = 500.45m , Quantity =1 },
+                new Product() { ProductId =4, Name= "Ladies Watches" , Cost = 500.45m , Quantity =1 },
+                new Product() { ProductId =5, Name= "Laptops" , Cost = 500.45m , Quantity =1 },
+                new Product() { ProductId =6, Name= "DSLR Cameras" , Cost = 500.45m , Quantity =1 },
+            };
+
+            IList<Product> purchasedProducts = RecommendedProductsPurchased(cartlist: cartlist,
+                                                recommendedList: recommendedList);
+
+            //automapinitialize();
             Console.Read();
-            
         }
 
+
+        //public DataTable SearchProducts()
+        //{
+            //DataTable dt = null;
+            //string cmdText = string.Format("SELECT * FROM Products WHERE ProductName LIKE @prodcutName");
+            //try
+            //{
+            //    using (SqlConnection _connection = new SqlConnection(""))
+            //    {
+            //        string searchTerm = string.Format("%{0}%", txtSearchBox.Text);
+            //        SqlCommand sqlComm = new SqlCommand(cmdText, _connection);
+            //        SqlParameter sqlparam = new SqlParameter("@productName", searchTerm);
+            //        sqlComm.Parameters.Add(sqlparam);
+            //        sqlComm.CommandType = CommandType.Text;
+            //        if (_connection.State == ConnectionState.Closed) { _connection.Open(); }
+            //        SqlDataAdapter da = new SqlDataAdapter(sqlComm);
+            //        dt = new DataTable();
+            //        da.Fill(dt);
+            //    }
+                
+            //}
+            //catch (Exception exception)
+            //{
+            //    //log the error message
+            //    throw;
+            //}
+            //finally
+            //{
+            //    //we can close the sql connection in finally block or implement a class which takes care
+            //    //of sql connection implementing IDisposable interface.
+            //}
+            //return dt;
+       // }
+
+        static IList<Product> RecommendedProductsPurchased(IList<Product> cartlist, IList<Product> recommendedList)
+        {
+            IList<Product> purchasedList = null;
+            if (cartlist != null && cartlist.Count > 0 && recommendedList != null && recommendedList.Count > 0)
+            {
+                purchasedList = new List<Product>();
+                var list = Enumerable.Join(cartlist, recommendedList, cart => cart.ProductId, recomlist => recomlist.ProductId,
+                    (cart, recomlist) =>
+                {
+                    if (cart.ProductId.Equals(recomlist.ProductId))
+                    {
+                        purchasedList.Add(cart);
+                    }
+                    return cart.Name;
+                }).ToList();
+            }
+            return purchasedList;
+        }
         private static void automapinitialize()
         {
-            Mapper.CreateMap<Order,OrdersVM>();
+            Mapper.CreateMap<Order, OrdersVM>();
             var context = new NorthwindEntities();
             var orderList = from ord in context.Orders select ord;
             var ordervmlist = new List<OrdersVM>();

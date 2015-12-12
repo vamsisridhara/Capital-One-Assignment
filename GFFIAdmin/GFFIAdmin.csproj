@@ -317,6 +317,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\capone.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="formvalidation.html" />
@@ -346,6 +347,7 @@
     <Content Include="jsonedit.html" />
     <Content Include="landing.html" />
     <Content Include="Menus\capone.html" />
+    <Content Include="Menus\IRR.html" />
     <Content Include="Menus\large_dropdown_menu.html" />
     <Content Include="Menus\MegaMenu.html" />
     <Content Include="messages.html" />
