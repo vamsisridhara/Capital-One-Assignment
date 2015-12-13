@@ -11,11 +11,61 @@
     <link rel="stylesheet" type="text/css" href="https://www.capitalone.com/assets/rwd/css/min/default.css?p=0&v=15.09.01" />
     <script type="text/javascript" src="https://assets.cofstatic.com/assets/rwd/js/min/lib.min.js?p=0&v=15.09.01.00"></script>
     <script type="text/javascript" src="https://assets.cofstatic.com/assets/rwd/js/min/cof.min.js?p=0&v=15.09.01.00"></script>
-    <meta name="redirect" value="true" />
-    <meta name="google-site-verification" content="IV52K4xCrzb_dWgrCX9iWH38pzx8JOGUpEtw1qJfpAY" />
-    <meta name="msvalidate.01" content="2B760BB7ABB53C167FC7EC83FE47EB34" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Capital One offers credit cards, checking and savings accounts, auto loans, rewards, and online banking services for individuals and businesses.">
+    <style>
+        @media only screen and (max-width: 800px) {
+
+            /* Force table to not be like tables anymore */
+            #no-more-tables table,
+            #no-more-tables thead,
+            #no-more-tables tbody,
+            #no-more-tables th,
+            #no-more-tables td,
+            #no-more-tables tr {
+                display: block;
+            }
+
+                /* Hide table headers (but not display: none;, for accessibility) */
+                #no-more-tables thead tr {
+                    position: absolute;
+                    top: -9999px;
+                    left: -9999px;
+                }
+
+            #no-more-tables tr {
+                border: 1px solid #ccc;
+            }
+
+            #no-more-tables td {
+                /* Behave  like a "row" */
+                border: none;
+                border-bottom: 1px solid #eee;
+                position: relative;
+                padding-left: 50%;
+                white-space: normal;
+                text-align: left;
+            }
+
+                #no-more-tables td:before {
+                    /* Now like a table header */
+                    position: absolute;
+                    /* Top/left values mimic padding */
+                    top: 6px;
+                    left: 6px;
+                    width: 45%;
+                    padding-right: 10px;
+                    white-space: nowrap;
+                    text-align: left;
+                    font-weight: bold;
+                }
+
+                /*
+        Label the data
+        */
+                #no-more-tables td:before {
+                    content: attr(data-title);
+                }
+        }
+    </style>
 </head>
 <body class="homepage sectioned">
     <div id="wrapper">
@@ -101,7 +151,7 @@
                                         </div>
                                     </li>
                                     <li class="hasChildren" aria-describedby="personal">
-                                        <a href="">Daily LCR</a>
+                                        <a href="dailylcr.html">Daily LCR</a>
                                         <span class="expand-super">
                                             <button aria-haspopup="true" type="button">Expand Dialy LCR Menu</button>
                                         </span>
@@ -126,13 +176,14 @@
                                         </span>
                                         <div class="row" role="menu">
                                             <div class="column alpha">
-                                                <h2><a href="IRR.html">IRR</a></h2>
+                                                <h2><a href="IRR.html" target="_parent">IRR</a></h2>
                                                 <ul aria-hidden="true" class="kybd-nav">
                                                     <li class="mobile-only" role="menuitem">
-                                                        <a href="IRR.html">IRR Home</a>
+                                                        <a href="IRR.html" target="_parent">IRR Home</a>
                                                     </li>
                                                     <li role="menuitem">
-                                                        <a class="zip-prompt-flag zip-prompt-flag" href="IRR.html">IRR</a>
+                                                        <a target="_parent"
+                                                           href="IRR.html">IRR</a>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -140,7 +191,6 @@
                                     </li>
                                 </ul>
                             </li>
-
                         </ul>
                     </div>
                 </div>
@@ -150,101 +200,145 @@
             <div id="page-body-wrapper" class="container" role="main">
                 <div class="row main-content">
                     <div class="sixteen columns">
-                        <div class="form-group">
+                        <div id="no-more-tables" class="form-group">
                             <label class="control-label">List Of Portfolios</label>
-                            <table class="table table-bordered">
+                            <table class="col-md-12 table-bordered table-striped table-condensed cf">
+                                <thead class="cf">
+                                    <tr>
+                                        <th>
+                                            Portfolio ID
+                                        </th>
+                                        <th>
+                                            Name
+                                        </th>
+                                        <th>Description</th>
+                                        <th>Created Date</th>
+                                        <th>CDate</th>
+                                        <th>Data Lock</th>
+                                    </tr>
+                                </thead>
                                 <tr>
-                                    <th>
-                                        Portfolio ID
-                                    </th>
-                                    <th>
-                                        Name
-                                    </th>
-                                    <th>Description</th>
-                                    <th>Created Date</th>
-                                    <th>CDate</th>
-                                    <th>Data Lock</th>
-                                </tr>
-                                <tr>
-                                    <td>
+                                    <td data-title="Portfolio ID">
                                         1
                                     </td>
-                                    <td>
+                                    <td data-title="Name">
                                         FTP_105
                                     </td>
-                                    <td>
+                                    <td data-title="Description">
                                         FTP Production
                                     </td>
-                                    <td>
+                                    <td data-title="Created Date">
                                         12/05/2015
                                     </td>
-                                    <td>
+                                    <td data-title="CDate">
                                         12/05/2015
                                     </td>
-                                    <td>false</td>
+                                    <td data-title="Data Lock">false</td>
                                     <td>
                                         <button type="button" class="btn btn-primary c1-button">Delete</button>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>
-                                        1
+                                    <td data-title="Portfolio ID">
+                                        2
                                     </td>
-                                    <td>
+                                    <td data-title="Name">
                                         FTP_105
                                     </td>
-                                    <td>
+                                    <td data-title="Description">
                                         FTP Production
                                     </td>
-                                    <td>
+                                    <td data-title="Created Date">
                                         12/05/2015
                                     </td>
-                                    <td>
+                                    <td data-title="CDate">
                                         12/05/2015
                                     </td>
-                                    <td>false</td>
+                                    <td data-title="Data Lock">false</td>
                                     <td>
                                         <button type="button" class="btn btn-primary c1-button">Delete</button>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>
-                                        1
+                                    <td data-title="Portfolio ID">
+                                        3
                                     </td>
-                                    <td>
+                                    <td data-title="Name">
                                         FTP_105
                                     </td>
-                                    <td>
+                                    <td data-title="Description">
                                         FTP Production
                                     </td>
-                                    <td>
+                                    <td data-title="Created Date">
                                         12/05/2015
                                     </td>
-                                    <td>
+                                    <td data-title="CDate">
                                         12/05/2015
                                     </td>
-                                    <td>false</td>
+                                    <td data-title="Data Lock">false</td>
                                     <td>
                                         <button type="button" class="btn btn-primary c1-button">Delete</button>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>
-                                        1
+                                    <td data-title="Portfolio ID">
+                                        4
                                     </td>
-                                    <td>
+                                    <td data-title="Name">
                                         FTP_105
                                     </td>
-                                    <td>
+                                    <td data-title="Description">
                                         FTP Production
                                     </td>
-                                    <td>
+                                    <td data-title="Created Date">
                                         12/05/2015
                                     </td>
-                                    <td>
+                                    <td data-title="CDate">
                                         12/05/2015
                                     </td>
-                                    <td>false</td>
+                                    <td data-title="Data Lock">false</td>
+                                    <td>
+                                        <button type="button" class="btn btn-primary c1-button">Delete</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td data-title="Portfolio ID">
+                                        5
+                                    </td>
+                                    <td data-title="Name">
+                                        FTP_105
+                                    </td>
+                                    <td data-title="Description">
+                                        FTP Production
+                                    </td>
+                                    <td data-title="Created Date">
+                                        12/05/2015
+                                    </td>
+                                    <td data-title="CDate">
+                                        12/05/2015
+                                    </td>
+                                    <td data-title="Data Lock">false</td>
+                                    <td>
+                                        <button type="button" class="btn btn-primary c1-button">Delete</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td data-title="Portfolio ID">
+                                        6
+                                    </td>
+                                    <td data-title="Name">
+                                        FTP_105
+                                    </td>
+                                    <td data-title="Description">
+                                        FTP Production
+                                    </td>
+                                    <td data-title="Created Date">
+                                        12/05/2015
+                                    </td>
+                                    <td data-title="CDate">
+                                        12/05/2015
+                                    </td>
+                                    <td data-title="Data Lock">false</td>
                                     <td>
                                         <button type="button" class="btn btn-primary c1-button">Delete</button>
                                     </td>

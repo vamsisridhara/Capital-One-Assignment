@@ -255,6 +255,7 @@
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="index.html" />
     <Content Include="Menus\capone.html" />
+    <Content Include="Menus\dailylcr.html" />
     <Content Include="Menus\IRR.html" />
     <Content Include="Menus\large_dropdown_menu.html" />
     <Content Include="Menus\MegaMenu.html" />
