@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/angular-ui/bower-ui-grid/master/ui-grid.min.css">
+    <script src="../Scripts/angular.min.js"></script>
+    <script src="https://code.angularjs.org/1.5.0-rc.0/angular-touch.min.js"></script>
+    <script src="https://code.angularjs.org/1.5.0-rc.0/angular-animate.min.js"></script>
+    <script src="https://cdn.rawgit.com/angular-ui/bower-ui-grid/master/ui-grid.min.js"></script>
+    <style>
+        .grid {
+            width: 500px;
+            height: 250px;
+        }
+    </style>
+    <script>
+        (function () {
+            var app = angular.module('app', ['ngTouch', 'ui.grid']);
+            app.controller('MainCtrl', ['$scope', function ($scope) {
+                $scope.myData = [{
+                    "firstName": "Cox",
+                    "lastName": "Carney",
+                    "company": "Enormo",
+                    "employed": true
+                }, {
+                    "firstName": "Lorraine",
+                    "lastName": "Wise",
+                    "company": "Comveyer",
+                    "employed": false
+                }, {
+                    "firstName": "Nancy",
+                    "lastName": "Waters",
+                    "company": "Fuelton",
+                    "employed": false
+                }];
+            }]);
+
+        }());
+    </script>
+</head>
+<body>
+    <div>
+        <div ng-controller="MainCtrl">
+            <div ui-grid="{ data: myData }"></div>
+        </div>
+    </div>
+</body>
+</html>

@@ -351,6 +351,8 @@
     <Content Include="Menus\large_dropdown_menu.html" />
     <Content Include="Menus\MegaMenu.html" />
     <Content Include="messages.html" />
+    <Content Include="nggrid\basicgrid.html" />
+    <Content Include="nggrid\paginggrid.html" />
     <Content Include="progressbar.html" />
     <Content Include="progressbar2.html" />
     <Content Include="Repository\Nwind.Context.tt">
