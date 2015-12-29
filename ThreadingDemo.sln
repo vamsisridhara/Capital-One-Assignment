@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GFFIAdmin", "GFFIAdmin\GFFI
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPIDI", "WebAPIDI\WebAPIDI.csproj", "{6EBE58DF-0CF5-445E-843B-8E2FED69DA4F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngLOB", "AngLOB\AngLOB.csproj", "{A08A5475-8E6A-41A4-AEE2-A14363BFB3F3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{6EBE58DF-0CF5-445E-843B-8E2FED69DA4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6EBE58DF-0CF5-445E-843B-8E2FED69DA4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6EBE58DF-0CF5-445E-843B-8E2FED69DA4F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A08A5475-8E6A-41A4-AEE2-A14363BFB3F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A08A5475-8E6A-41A4-AEE2-A14363BFB3F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A08A5475-8E6A-41A4-AEE2-A14363BFB3F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A08A5475-8E6A-41A4-AEE2-A14363BFB3F3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

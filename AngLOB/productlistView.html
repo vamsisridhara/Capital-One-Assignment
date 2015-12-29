@@ -1,0 +1,48 @@
+﻿<div class="container"> 
+     <!--ng-controller="productListCtrl as vm">-->
+    <div class="panel">
+        <div class="panel-heading">Product List</div>
+    </div>
+    <div class="jumbotron">
+        <div class="row">
+            <table class="table table-condensed">
+                <thead>
+                    <tr>
+                        <td>
+                            <button type="button" ng-click="vm.toggleImage()" class="btn btn-primary">
+                                {{ vm.showImage ? 'Hide' : 'Show'}} Image
+                            </button>
+                        </td>
+                        <td>Product</td>
+                        <td>Code</td>
+                        <td>Available</td>
+                        <td>Price</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="product in vm.products">
+                        <td>
+                            <img ng-if="vm.showImage"
+                                 ng-src="{{ product.imageURL }}" 
+                                 title="{{ product.productName }}" />
+                        </td>
+                        <td>
+                            <a ui-sref="productDetail({productID: product.productID})">
+                                {{product.productName}}
+                            </a>
+                        </td>
+                        <td>{{product.productCode}}</td>
+                        <td>{{product.productDate}}</td>
+                        <td>{{product.price |currency}}</td>
+                        <td>
+                            <a class="btn btn-primary"
+                               ui-sref="productEdit.info({productID: product.productID})">
+                                Edit
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

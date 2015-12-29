@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html ng-app="exampleApp">
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="Content/toastr.min.css" rel="stylesheet"/>
+    <style>
+        body {
+            background-color: #C6D9F1;
+        }
+        .wizard a {
+            background: #efefef;
+            display: inline-block;
+            margin-right: 5px;
+            min-width: 150px;
+            outline: none;
+            padding: 10px 40px 10px;
+            position: relative;
+            text-decoration: none;
+        }
+        .wizard .active {
+            background: #007ACC;
+            color: #fff;
+        }
+        .chart {
+            width:100%;
+            height:300px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-inverse">
+        <div class="container">
+            <a class="navbar-brand" ui-sref="home">Acme Product Management</a>
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle"
+                        data-toggle="collapse"
+                        data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle Navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a ui-sref="productList">Product List</a>
+                    </li>
+                    <li>
+                        <a ui-sref="productEdit.info({productID:0})">
+                            <i class="glyphicon glyphicon-plus"></i>Add Product
+                        </a>
+                    </li>
+                    <li>
+                        <a ui-sref="priceAnalytics">Price Analytics</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div ui-view></div>
+</body>
+</html>
+<script src="scripts/jquery-2.1.4.min.js"></script>
+<script src="scripts/bootstrap.min.js"></script>
+<script src="scripts/angular.min.js"></script>
+<script src="scripts/angular-ui-router.min.js"></script>
+<script src="scripts/angular-resource.min.js"></script>
+<script src="scripts/angular-mocks.js"></script>
+<script src="scripts/angular-ui/ui-utils.min.js"></script>
+<script src="scripts/ui-bootstrap-tpls-0.14.3.min.js"></script>
+<script src="scripts/toastr.min.js"></script>
+<script src="scripts/d3.min.js"></script>
+<script src="scripts/angular-charts.min.js"></script>
+<script src="app.js"></script>
+<script src="common.services.js"></script>
+<script src="productResource.js"></script>
+<script src="productResourceMock.js"></script>
+<script src="productListCtrl.js"></script>
+<script src="productDetailCtrl.js"></script>
+<script src="productEditCtrl.js"></script>
+<script src="priceAnalyticsCtrl.js"></script>

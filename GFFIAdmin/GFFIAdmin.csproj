@@ -268,19 +268,23 @@
     <Compile Include="Controllers\GenericRepoController.cs" />
     <Compile Include="Controllers\GffiAdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\JQueryDataTableController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Company.cs" />
     <Compile Include="Models\CustomerAutofac.cs" />
     <Compile Include="Models\EmployeeViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ILobRepository.cs" />
     <Compile Include="Models\IPortfolioRepository.cs" />
+    <Compile Include="Models\JQueryDataTableParamModel.cs" />
     <Compile Include="Models\LineofBusiness.cs" />
     <Compile Include="Models\LobRepository.cs" />
+    <Compile Include="Models\Repository\DataRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Repository\Customer.cs">
@@ -392,11 +396,13 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\gffiAdminController.js" />
     <Content Include="Scripts\gffiAdminService.js" />
+    <Content Include="Scripts\index.js" />
     <Content Include="Scripts\irrController.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
     <Content Include="Scripts\jquery-2.1.4.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.dataTables.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -421,6 +427,7 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\AutofacTest\Index.cshtml" />
+    <Content Include="Views\JQueryDataTable\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
