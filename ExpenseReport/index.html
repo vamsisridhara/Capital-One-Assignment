@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <title>Expense Report</title>
+	<meta charset="utf-8" />
+    <link rel="stylesheet" href="Content/bootstrap.min.css" />
+    <link rel="stylesheet" href="Content/bootstrap-theme.min.css" />
+    <style>
+        body{
+            margin: 4em 0 0 1em;
+        }
+    </style>
+
+    <script src="Scripts/angular.min.js"></script>
+    <script src="Scripts/angular-route.min.js"></script>
+
+    <script src="src/app/app.js"></script>
+    <script src="src/app/Expense.js"></script>
+    <script src="src/app/ExpenseItem.js"></script>
+</head>
+<body>
+    <div>
+        <header class="navbar navbar-inverse navbar-fixed-top"
+                role="banner">
+            <div class="navbar-collapse collapse">
+                <nav class="navbar">
+                    <ul class="navbar-nav">
+                        <li><a href="#/">Expenses</a></li>
+                        <li><a href="#/admin">Admin</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+    </div>
+    <div>
+        <div ng-view></div>
+    </div>
+</body>
+</html>
