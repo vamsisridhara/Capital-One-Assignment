@@ -123,3 +123,6 @@ C:\Users\Vamsi\Documents\GitHub\Assignments\Capital-One-Assignment\CommuterSyste
 C:\Users\Vamsi\Documents\GitHub\Assignments\Capital-One-Assignment\CommuterSystem\obj\Debug\CommuterSystem.dll
 C:\Users\Vamsi\Documents\GitHub\Assignments\Capital-One-Assignment\CommuterSystem\obj\Debug\CommuterSystem.pdb
 C:\Users\Vamsi\Documents\GitHub\Assignments\Capital-One-Assignment\CommuterSystem\obj\Debug\CommuterSystem.csprojResolveAssemblyReference.cache
+C:\Users\Vamsi\Documents\GitHub\Assignments\Capital-One-Assignment\CommuterSystem\bin\nunit.framework.dll
+C:\Users\Vamsi\Documents\GitHub\Assignments\Capital-One-Assignment\CommuterSystem\bin\TechTalk.SpecFlow.dll
+C:\Users\Vamsi\Documents\GitHub\Assignments\Capital-One-Assignment\CommuterSystem\bin\nunit.framework.xml

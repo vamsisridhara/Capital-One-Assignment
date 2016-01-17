@@ -87,3 +87,6 @@ C:\Users\Vamsi\Documents\GitHub\Assignments\Capital-One-Assignment\GFFIAdmin\bin
 C:\Users\Vamsi\Documents\GitHub\Assignments\Capital-One-Assignment\GFFIAdmin\bin\Mono.Reflection.dll
 C:\Users\Vamsi\Documents\GitHub\Assignments\Capital-One-Assignment\GFFIAdmin\bin\AutoMapper.xml
 C:\Users\Vamsi\Documents\GitHub\Assignments\Capital-One-Assignment\GFFIAdmin\bin\AutoMapper.EF6.xml
+C:\Users\Vamsi\Documents\GitHub\Assignments\Capital-One-Assignment\GFFIAdmin\bin\nunit.framework.dll
+C:\Users\Vamsi\Documents\GitHub\Assignments\Capital-One-Assignment\GFFIAdmin\bin\TechTalk.SpecFlow.dll
+C:\Users\Vamsi\Documents\GitHub\Assignments\Capital-One-Assignment\GFFIAdmin\bin\nunit.framework.xml

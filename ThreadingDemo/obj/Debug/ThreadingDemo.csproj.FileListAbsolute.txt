@@ -20,3 +20,6 @@ C:\Users\Vamsi\Documents\GitHub\Assignments\Capital-One-Assignment\ThreadingDemo
 C:\Users\Vamsi\Documents\GitHub\Assignments\Capital-One-Assignment\ThreadingDemo\bin\Debug\EntityFramework.xml
 C:\Users\Vamsi\Documents\GitHub\Assignments\Capital-One-Assignment\ThreadingDemo\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\Vamsi\Documents\GitHub\Assignments\Capital-One-Assignment\ThreadingDemo\obj\Debug\ThreadingDemo.csprojResolveAssemblyReference.cache
+C:\Users\Vamsi\Documents\GitHub\Assignments\Capital-One-Assignment\ThreadingDemo\bin\Debug\nunit.framework.dll
+C:\Users\Vamsi\Documents\GitHub\Assignments\Capital-One-Assignment\ThreadingDemo\bin\Debug\TechTalk.SpecFlow.dll
+C:\Users\Vamsi\Documents\GitHub\Assignments\Capital-One-Assignment\ThreadingDemo\bin\Debug\nunit.framework.xml

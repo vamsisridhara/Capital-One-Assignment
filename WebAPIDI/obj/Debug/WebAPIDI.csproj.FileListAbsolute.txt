@@ -88,3 +88,6 @@ C:\Users\Vamsi\Documents\GitHub\Assignments\Capital-One-Assignment\WebAPIDI\bin\
 C:\Users\Vamsi\Documents\GitHub\Assignments\Capital-One-Assignment\WebAPIDI\bin\Microsoft.Practices.Unity.Configuration.xml
 C:\Users\Vamsi\Documents\GitHub\Assignments\Capital-One-Assignment\WebAPIDI\bin\Microsoft.Practices.Unity.Mvc.xml
 C:\Users\Vamsi\Documents\GitHub\Assignments\Capital-One-Assignment\WebAPIDI\bin\Microsoft.Practices.Unity.RegistrationByConvention.xml
+C:\Users\Vamsi\Documents\GitHub\Assignments\Capital-One-Assignment\WebAPIDI\bin\nunit.framework.dll
+C:\Users\Vamsi\Documents\GitHub\Assignments\Capital-One-Assignment\WebAPIDI\bin\TechTalk.SpecFlow.dll
+C:\Users\Vamsi\Documents\GitHub\Assignments\Capital-One-Assignment\WebAPIDI\bin\nunit.framework.xml
