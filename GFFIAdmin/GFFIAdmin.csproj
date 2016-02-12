@@ -330,8 +330,24 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\capone.css" />
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\main.css" />
+    <Content Include="Content\sample1.css" />
+    <Content Include="Content\sample2.css" />
+    <Content Include="Content\_defaults.css" />
+    <Content Include="Content\_normalize.css" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\generator_config.txt" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="fonts\oswald-bold-demo.html" />
+    <Content Include="fonts\oswald-bold-webfont.svg" />
+    <Content Include="fonts\oswald-light-demo.html" />
+    <Content Include="fonts\oswald-light-webfont.svg" />
+    <Content Include="fonts\oswald-regular-demo.html" />
+    <Content Include="fonts\oswald-regular-webfont.svg" />
+    <Content Include="fonts\oswald-stencil-demo.html" />
+    <Content Include="fonts\oswald-stencil-webfont.svg" />
     <Content Include="formvalidation.html" />
     <Content Include="Global.asax" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
@@ -353,8 +369,29 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <Content Include="images\aboutus.png" />
     <Content Include="images\ajax-loader.gif" />
     <Content Include="formvalidationngmsgs.html" />
+    <Content Include="images\banner1.jpg" />
+    <Content Include="images\banner2.jpg" />
+    <Content Include="images\banner3.jpg" />
+    <Content Include="images\banner4.jpg" />
+    <Content Include="images\capone.jpg" />
+    <Content Include="images\careers.png" />
+    <Content Include="images\cone.png" />
+    <Content Include="images\contact-icons.png" />
+    <Content Include="images\contact.png" />
+    <Content Include="images\footer-nav-icon.png" />
+    <Content Include="images\homebanner-left-icon.png" />
+    <Content Include="images\homebanner-right-icon.png" />
+    <Content Include="images\innerbaner.jpg" />
+    <Content Include="images\logo.png" />
+    <Content Include="images\products-icon.png" />
+    <Content Include="images\products.png" />
+    <Content Include="images\services-icon.png" />
+    <Content Include="images\services.png" />
+    <Content Include="images\solutions.png" />
+    <Content Include="images\under.png" />
     <Content Include="irr.html" />
     <Content Include="jsonedit.html" />
     <Content Include="landing.html" />
@@ -362,6 +399,9 @@
     <Content Include="Menus\IRR.html" />
     <Content Include="Menus\large_dropdown_menu.html" />
     <Content Include="Menus\MegaMenu.html" />
+    <Content Include="Menus\sample1.html" />
+    <Content Include="Menus\sample2.html" />
+    <Content Include="Menus\sample3.html" />
     <Content Include="messages.html" />
     <Content Include="nggrid\basicgrid.html" />
     <Content Include="nggrid\paginggrid.html" />
@@ -377,6 +417,8 @@
       <DependentUpon>Nwind.edmx</DependentUpon>
       <LastGenOutput>Nwind.cs</LastGenOutput>
     </Content>
+    <Content Include="responseiveTable.html" />
+    <Content Include="responsiveTable2.html" />
     <Content Include="Scripts\angular-messages.js" />
     <Content Include="Scripts\angular-mocks.js" />
     <Content Include="Scripts\angular-resource.min.js" />
@@ -399,6 +441,22 @@
     <Content Include="Repository\Nwind.edmx.diagram">
       <DependentUpon>Nwind.edmx</DependentUpon>
     </Content>
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\oswald-bold-webfont.eot" />
+    <Content Include="fonts\oswald-bold-webfont.ttf" />
+    <Content Include="fonts\oswald-bold-webfont.woff" />
+    <Content Include="fonts\oswald-light-webfont.eot" />
+    <Content Include="fonts\oswald-light-webfont.ttf" />
+    <Content Include="fonts\oswald-light-webfont.woff" />
+    <Content Include="fonts\oswald-regular-webfont.eot" />
+    <Content Include="fonts\oswald-regular-webfont.ttf" />
+    <Content Include="fonts\oswald-regular-webfont.woff" />
+    <Content Include="fonts\oswald-stencil-webfont.eot" />
+    <Content Include="fonts\oswald-stencil-webfont.ttf" />
+    <Content Include="fonts\oswald-stencil-webfont.woff" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />

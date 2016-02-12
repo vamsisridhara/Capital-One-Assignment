@@ -140,6 +140,7 @@
     <Content Include="Content\toastr.css" />
     <Content Include="Content\toastr.min.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="functionsJS.html" />
     <Content Include="Global.asax" />
     <Content Include="images\nike_justdoit_00.jpg" />
     <Content Include="index.html" />

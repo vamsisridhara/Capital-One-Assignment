@@ -1,0 +1,537 @@
+﻿<!DOCTYPE html>
+<html ng-app="orchestration">
+<head>
+    <title>Orchestration</title>
+    <meta charset="utf-8" />
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/bootstrap-theme.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <style>
+        #tabs-main {
+            font-size: 12px;
+        }
+
+        .ui-widget-header {
+            background: #b9cd6d;
+            border: 1px solid #b9cd6d;
+            color: #FFFFFF;
+            font-weight: bold;
+        }
+
+        .ui-datepicker {
+            font-size: 11px;
+        }
+
+        .borderless td, .borderless th {
+            border: none;
+        }
+
+        fieldset.scheduler-border {
+            border: 1px groove #ddd !important;
+            padding: 0 1.4em 1.4em 1.4em !important;
+            margin: 0 0 1.5em 0 !important;
+            -webkit-box-shadow: 0px 0px 0px 0px #000;
+            box-shadow: 0px 0px 0px 0px #000;
+        }
+
+        legend.scheduler-border {
+            font-size: 1.2em !important;
+            font-weight: bold !important;
+            text-align: left !important;
+            width: auto;
+            padding: 0 10px;
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <div class="container container-fluid"
+             ng-controller="orchestrationController">
+
+            <fieldset class="scheduler-border">
+                <legend class="scheduler-border">Instance Setup</legend>
+                <!-- Columns are always 50% wide, on mobile and desktop -->
+                <div class="row">
+                    <div class="col-md-3">
+                        <label class="control-label" for="ddlQRMInstance">Select QRM Instance</label>
+                        <select class="form-control" id="ddlQRMInstance">
+                            <option></option>
+                            <option></option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="control-label" for="qrmfilepath">QRM Files Path</label>
+                        <input type="text" id="qrmfilepath" class="form-control" readonly />
+                    </div>
+                    <div class="col-md-2">
+                        <label class="control-label" for="dailyDate">Date for Daily data</label>
+                        <input type="text" id="dailyDate" class="form-control datepicker" ng-model="ddate" />
+                    </div>
+                    <div class="col-md-2">
+                        <label class="control-label" for="monthlyDate">Date for Monthly data</label>
+                        <input type="text" class="form-control monthPicker" id="monthlyDate" ng-model="mdate" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label class="control-label" for="applog">Application log</label>
+                        <input type="file" class="form-control" applog="applicationLog" id="applog" />
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset class="scheduler-border">
+                <legend class="scheduler-border">Data Sets Selection</legend>
+                <!-- Columns are always 50% wide, on mobile and desktop -->
+                <div class="row">
+                    <div class="col-md-3">
+                        <label class="control-label" for="ddlcompany">Select Company</label>
+                        <select id="ddlcompany" class="form-control">
+                            <option></option>
+                            <option></option>
+                            <option></option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="control-label" for="ddlassumptions">Select Assumptions</label>
+                        <select id="ddlassumptions" class="form-control">
+                            <option></option>
+                            <option></option>
+                            <option></option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="control-label" for="ddlPortfolio">Select Portfolio</label>
+                        <select id="ddlPortfolio" class="form-control">
+                            <option></option>
+                            <option></option>
+                            <option></option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="control-label" for="ddlParameters">Select Cycle Parameters</label>
+                        <select id="ddlParameters" class="form-control">
+                            <option></option>
+                            <option></option>
+                            <option></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label class="control-label" for="ddlMarket">Select Market</label>
+                        <select id="ddlMarket" class="form-control">
+                            <option></option>
+                            <option></option>
+                            <option></option>
+                        </select>
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset class="scheduler-border">
+                <legend class="scheduler-border">
+                    Run Settings: Choose Processes to be executed
+                </legend>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="chkPurgePortfolio">
+                            <input type="checkbox"
+                                   id="chkPurgePortfolio"
+                                   ng-model="PurgePortfolio" />
+                            Purge Portfolio Data
+                        </label>
+                        <label for="chkPurgeSchedules">
+                            <input type="checkbox"
+                                   id="chkPurgeSchedules"
+                                   ng-model="PurgeSchedules" />
+                            Purge Schedules
+                        </label>
+                        <label for="chkPurgeRunResults">
+                            <input type="checkbox"
+                                   id="chkPurgeRunResults"
+                                   ng-model="PurgeRunResults" />
+                            Purge Run Results
+                        </label>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="chkEMData">
+                            <input type="checkbox"
+                                   id="chkEMData"
+                                   ng-model="EMData"
+                                   ng-click="showMonthtab()" />
+                            Extract Monthly Data
+                        </label>
+                        <label for="chkEDData">
+                            <input type="checkbox"
+                                   id="chkEDData"
+                                   ng-model="EDData"
+                                   ng-click="showDailytab()" />
+                            Extract Daily Data
+                        </label>
+                        <label for="chkESchedules">
+                            <input type="checkbox"
+                                   id="chkESchedules"
+                                   ng-model="ESchedules" />
+                            Extract Schedules
+                        </label>
+                        <label for="chkECDataUpdates">
+                            <input type="checkbox"
+                                   id="chkECDataUpdates"
+                                   ng-model="ECDataUpdates" />
+                            Extract Custom Data Updates
+                        </label>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="chkStratify">
+                            <input type="checkbox"
+                                   id="chkStratify"
+                                   ng-model="Stratify" />
+                            Stratify
+                        </label>
+                        <br />
+                        <label for="chkRunPlanning">
+                            <input type="checkbox"
+                                   id="chkRunPlanning"
+                                   ng-model="RunPlanning" />
+                            Run Planning
+                        </label>
+                        <br />
+                        <label for="chkExReports">
+                            <input type="checkbox"
+                                   id="chkExReports"
+                                   ng-model="ExReports" />
+                            Export Reports
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-offset-3">
+                        <input type="button"
+                               class="btn btn-primary btn-sm"
+                               id="btnSelectAll"
+                               value="Select All"
+                               ng-click="checkAll()" />
+                        <input type="button"
+                               class="btn btn-primary btn-sm"
+                               id="btnUnSelectAll"
+                               value="Unselect All"
+                               ng-click="uncheckAll()" />
+                        <input type="button"
+                               class="btn btn-primary btn-sm"
+                               id="btnRun"
+                               value="Run" />
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset class="scheduler-border">
+                <legend class="scheduler-border">
+                    Process Definition
+                </legend>
+                <div id="tabs-main">
+                    <ul>
+                        <li><a href="#monthly">Monthly</a></li>
+                        <li><a href="#dialy">Dialy</a></li>
+                        <li><a href="#cs">Custom Schedules</a></li>
+                        <li><a href="#du">Data Updates</a></li>
+                        <li><a href="#str">Stratification</a></li>
+                        <li><a href="#pr">Planning Run</a></li>
+                        <li><a href="#rptexp">Reports Export</a></li>
+                    </ul>
+
+                    <div id="monthly">
+                        <fieldset class="scheduler-border">
+                            <legend class="scheduler-border">
+                                Portfolio Extraction
+                            </legend>
+                            <label for="chkDP" class="control-label">
+                                <input type="checkbox" id="chkDP" />
+                                Distrubuted Processing
+                            </label>
+                            <br />
+                            <label class="control-label">
+                                Monthly Data Extraction for : 11/30/2015
+                            </label>
+                            <br />
+                            <div>
+                                <button type="button" class="btn btn-sm btn-primary" ng-click="addETLMonthly()">Add Monthly</button>
+                            </div>
+                            <div class="row form-inline">
+                                <table class="table borderless">
+                                    <tr ng-repeat="m in monthly">
+                                        <td align="right">
+                                            <button class="btn btn-sm btn-primary"
+                                                    ng-click="removeETLMonthly(m.count)">
+                                                <span class="ui-icon ui-icon-closethick"></span>
+                                            </button>
+                                        </td>
+                                        <td align="right">
+                                            <label class="control-label" for="ddlETLMapping">Select ETL Mapping</label>
+                                        </td>
+                                        <td>
+                                            <select ng-model="m.mapping" style="width:75%"
+                                                    class="form-control" id="ddlETLMapping">
+                                                <option ng-repeat="etl in ddlmonthlyoptions"
+                                                        value="{{etl.name}}">
+                                                    {{etl.name}}
+                                                </option>
+                                            </select>
+                                        </td>
+                                        <td align="right">
+                                            <label class="control-label" for="subportfolio">Select Sub-Portfolio</label>
+                                        </td>
+                                        <td>
+                                            <input type="file" id="subportfolio" fileread="m.filename" class="form-control" />
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </fieldset>
+                    </div>
+
+                    <div id="dialy">
+                        <fieldset class="scheduler-border">
+                            <legend class="scheduler-border">
+                                Portfolio Extraction
+                            </legend>
+                            <label for="chkDP" class="control-label">
+                                <input type="checkbox" id="chkDP" />
+                                Distrubuted Processing
+                            </label>
+                            <br />
+                            <label class="control-label">
+                                Daily Data Extraction for : 11/30/2015
+                            </label>
+                            <br />
+                            <div>
+                                <button type="button" class="btn btn-sm btn-primary" ng-click="addETLDaily()">Add Daily</button>
+                            </div>
+                            <div class="row form-inline">
+                                <table class="table borderless">
+                                    <tr ng-repeat="d in daily">
+                                        <td align="right">
+                                            <button class="btn btn-sm btn-primary"
+                                                    ng-click="removeETLDaily(d.count)">
+                                                <span class="ui-icon ui-icon-closethick"></span>
+                                            </button>
+                                        </td>
+                                        <td align="right">
+                                            <label class="control-label" for="ddlETLDMapping">Select ETL Mapping</label>
+                                        </td>
+                                        <td>
+                                            <select ng-model="d.mapping" style="width:75%"
+                                                    class="form-control" id="ddlETLDMapping">
+                                                <option ng-repeat="etl in ddldailyoptions"
+                                                        value="{{etl.name}}">
+                                                    {{etl.name}}
+                                                </option>
+                                            </select>
+                                        </td>
+                                        <td align="right">
+                                            <label class="control-label" for="subportfolio">Select Sub-Portfolio</label>
+                                        </td>
+                                        <td>
+                                            <input type="file" id="subportfolio" fileread="d.filename" class="form-control" />
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                        </fieldset>
+                    </div>
+
+                    <div id="cs">
+                        <fieldset class="scheduler-border">
+                            <legend class="scheduler-border">
+                                Custom Schedules Extraction
+                            </legend>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label for="chkusedp">
+                                        <input type="checkbox" id="chkusedp" />
+                                        Use Distrubuted Processing
+                                    </label>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="customSETL">
+                                        Select Custom Schedule ETL
+                                    </label>
+                                </div>
+                                <div class="col-md-3">
+                                    <input id="customSETL" type="file" />
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+
+                    <div id="du">
+                        <fieldset class="scheduler-border">
+                            <legend class="scheduler-border">Data Updates</legend>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label for="cETLEx">
+                                        Select Custom Schedule ETL
+                                    </label>
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="file" id="cETLEx" />
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+
+                    <div id="str">
+                        <fieldset class="scheduler-border">
+                            <legend class="scheduler-border">Stratification</legend>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label for="chkSt">
+                                        <input type="checkbox" id="chkSt" />
+                                        Use Distributed Processing
+                                    </label>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+
+                    <div id="pr">
+                        <fieldset class="scheduler-border">
+                            <legend class="scheduler-border">Planning Run</legend>
+                            <label for="chkPRDP">
+                                <input type="checkbox" id="chkPRDP" />
+                                Use Distributed Processing
+                            </label>
+                            <br />
+                            <div>
+                                <button type="button" class="btn btn-sm btn-primary" ng-click="addPlanningRun()">
+                                    Add Planning Run
+                                </button>
+                            </div>
+                            <div class="row form-inline">
+                                <table class="table borderless">
+                                    <tr ng-repeat="m in planningrun">
+                                        <td align="right">
+                                            <button class="btn btn-primary"
+                                                    ng-click="removePlanningRun(m.count)">
+                                                <span class="ui-icon ui-icon-closethick"></span>
+                                            </button>
+                                        </td>
+                                        <td align="right">
+                                            <label class="control-label">Select Strategy/Scenario XML</label>
+                                        </td>
+                                        <td>
+                                            <input type="file" class="form-control" planningrun="m.stxml" />
+                                        </td>
+                                        <td>
+                                            <label class="control-label">Select Accounts XML</label>
+                                        </td>
+                                        <td>
+                                            <input type="file" fileread="m.accxml" class="form-control" />
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </fieldset>
+                    </div>
+
+                    <div id="rptexp">
+                        <fieldset class="scheduler-border">
+                            <legend class="scheduler-border">
+                                Reports Export
+                            </legend>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label class="control-label">
+                                        Select Reports XML for Planning Runs
+                                    </label>
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="file" />
+                                </div>
+                            </div>
+                            <fieldset class="scheduler-border">
+                                <legend class="scheduler-border">
+                                    Scenario / Strategy Selection
+                                </legend>
+
+                                <div>
+                                    <button type="button" class="btn btn-sm btn-primary" ng-click="addScenario()">Add Scenario / Strategy</button>
+                                </div>
+                                <div class="row form-inline">
+                                    <table class="table borderless">
+                                        <tr ng-repeat="m in scenariosRpt">
+                                            <td align="right">
+                                                <button class="btn btn-sm btn-primary"
+                                                        ng-click="removeScenario(m.count)">
+                                                    <span class="ui-icon ui-icon-closethick"></span>
+                                                </button>
+                                            </td>
+                                            <td align="right">
+                                                <label class="control-label" for="ddlSelScenario">Select Scenario</label>
+                                            </td>
+                                            <td align="left" style="width:30%">
+                                                <select ng-model="m.scenario" style="width:75%"
+                                                        class="form-control" id="ddlSelScenario">
+                                                    <option ng-repeat="etl in ddlSelScenarios"
+                                                            value="{{etl.name}}">
+                                                        {{etl.name}}
+                                                    </option>
+                                                </select>
+                                            </td>
+                                            <td align="right">
+                                                <label class="control-label" for="ddlStrategy">Select Strategy</label>
+                                            </td>
+                                            <td align="left" style="width:30%">
+                                                <select ng-model="m.scenario" style="width:75%"
+                                                        class="form-control" id="ddlStrategy">
+                                                    <option ng-repeat="etl in ddlStrategies"
+                                                            value="{{etl.name}}">
+                                                        {{etl.name}}
+                                                    </option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </fieldset>
+                        </fieldset>
+                    </div>
+
+                </div>
+            </fieldset>
+        </div>
+    </form>
+</body>
+</html>
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script src="Scripts/bootstrap.min.js"></script>
+<script src="Scripts/angular.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.js"></script>
+<script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-1.1.0.js"></script>
+<script src="Scripts/orchcontroller.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#tabs-main").tabs();
+        $(".datepicker").datepicker();
+        $(".monthPicker").datepicker({
+            dateFormat: 'MM yy',
+            changeMonth: true,
+            changeYear: true,
+            showButtonPanel: true,
+            onClose: function (dateText, inst) {
+                var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+                var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+                $(this).val($.datepicker.formatDate('MM yy', new Date(year, month, 1)));
+                $("#monthlyDate").val($.datepicker.formatDate('MM yy', new Date(year, month, 1)));
+            }
+        });
+        $(".monthPicker").focus(function () {
+            $(".ui-datepicker-calendar").hide();
+            $("#ui-datepicker-div").position({
+                my: "center top",
+                at: "center bottom",
+                of: $(this)
+            });
+        });
+    });
+</script>

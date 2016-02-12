@@ -64,6 +64,16 @@ namespace ThreadingDemo
 
         static void Main(string[] args)
         {
+            var items = new int[2, 5] {
+                {1,2,3,4,5 },
+                { 6,7,8,9,10}
+            };
+
+            foreach (var item in items)
+            {
+                
+            }
+
             //Autofacinitialize();
             //ThreadingInvoke();
             IList<Product> cartlist = new List<Product>()
@@ -93,36 +103,36 @@ namespace ThreadingDemo
 
         //public DataTable SearchProducts()
         //{
-            //DataTable dt = null;
-            //string cmdText = string.Format("SELECT * FROM Products WHERE ProductName LIKE @prodcutName");
-            //try
-            //{
-            //    using (SqlConnection _connection = new SqlConnection(""))
-            //    {
-            //        string searchTerm = string.Format("%{0}%", txtSearchBox.Text);
-            //        SqlCommand sqlComm = new SqlCommand(cmdText, _connection);
-            //        SqlParameter sqlparam = new SqlParameter("@productName", searchTerm);
-            //        sqlComm.Parameters.Add(sqlparam);
-            //        sqlComm.CommandType = CommandType.Text;
-            //        if (_connection.State == ConnectionState.Closed) { _connection.Open(); }
-            //        SqlDataAdapter da = new SqlDataAdapter(sqlComm);
-            //        dt = new DataTable();
-            //        da.Fill(dt);
-            //    }
-                
-            //}
-            //catch (Exception exception)
-            //{
-            //    //log the error message
-            //    throw;
-            //}
-            //finally
-            //{
-            //    //we can close the sql connection in finally block or implement a class which takes care
-            //    //of sql connection implementing IDisposable interface.
-            //}
-            //return dt;
-       // }
+        //DataTable dt = null;
+        //string cmdText = string.Format("SELECT * FROM Products WHERE ProductName LIKE @prodcutName");
+        //try
+        //{
+        //    using (SqlConnection _connection = new SqlConnection(""))
+        //    {
+        //        string searchTerm = string.Format("%{0}%", txtSearchBox.Text);
+        //        SqlCommand sqlComm = new SqlCommand(cmdText, _connection);
+        //        SqlParameter sqlparam = new SqlParameter("@productName", searchTerm);
+        //        sqlComm.Parameters.Add(sqlparam);
+        //        sqlComm.CommandType = CommandType.Text;
+        //        if (_connection.State == ConnectionState.Closed) { _connection.Open(); }
+        //        SqlDataAdapter da = new SqlDataAdapter(sqlComm);
+        //        dt = new DataTable();
+        //        da.Fill(dt);
+        //    }
+
+        //}
+        //catch (Exception exception)
+        //{
+        //    //log the error message
+        //    throw;
+        //}
+        //finally
+        //{
+        //    //we can close the sql connection in finally block or implement a class which takes care
+        //    //of sql connection implementing IDisposable interface.
+        //}
+        //return dt;
+        // }
 
         static IList<Product> RecommendedProductsPurchased(IList<Product> cartlist, IList<Product> recommendedList)
         {

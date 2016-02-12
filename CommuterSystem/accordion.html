@@ -1,0 +1,298 @@
+﻿<!DOCTYPE html>
+<html ng-app="orchestration">
+<head>
+    <title>Twitter Bootstrap : Collapsible Accordion</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="Scripts/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.js"></script>
+    <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-1.1.0.js"></script>
+    <script src="Scripts/orchcontroller.js"></script>
+    <style>
+        /*
+        Max width before this PARTICULAR table gets nasty
+        This query will take effect for any screen smaller than 760px
+        and also iPads specifically.
+        */
+        @media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px) {
+
+            /* Force table to not be like tables anymore */
+            table, thead, tbody, th, td, tr {
+                display: block;
+            }
+            .borderless tbody tr td, .borderless tbody tr th {
+                border: none;
+            }
+                /* Hide table headers (but not display: none;, for accessibility) */
+                thead tr {
+                    position: absolute;
+                    top: -9999px;
+                    left: -9999px;
+                }
+
+            tr {
+                border: 1px solid #ccc;
+            }
+
+            td {
+                /* Behave  like a "row" */
+                border: none;
+                border-bottom: 2px solid #eee;
+                position: relative;
+                padding-left: 75%;
+            }
+
+                td:before {
+                    /* Now like a table header */
+                    position: absolute;
+                    /* Top/left values mimic padding */
+                    top: 6px;
+                    left: 6px;
+                    width: 100%;
+                    padding-right: 10px;
+                    white-space: nowrap;
+                }
+
+                /*
+            Label the data
+            */
+                /*td:nth-of-type(1):before {
+                    content: "Remove";
+                }
+
+                td:nth-of-type(2):before {
+                    content: "ETL Mapping";
+                }
+
+                td:nth-of-type(3):before {
+                    content: "Sub-Portfolio";
+                }*/
+
+            /*td:nth-of-type(4):before {
+                    content: "Favorite Color";
+                }
+
+                td:nth-of-type(5):before {
+                    content: "Wars of Trek?";
+                }
+
+                td:nth-of-type(6):before {
+                    content: "Porn Name";
+                }
+
+                td:nth-of-type(7):before {
+                    content: "Date of Birth";
+                }
+
+                td:nth-of-type(8):before {
+                    content: "Dream Vacation City";
+                }
+
+                td:nth-of-type(9):before {
+                    content: "GPA";
+                }
+
+                td:nth-of-type(10):before {
+                    content: "Arbitrary Data";
+                }*/
+        }
+
+        /* Smartphones (portrait and landscape) ----------- */
+        @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+            body {
+                padding: 0;
+                margin: 0;
+                width: 320px;
+            }
+        }
+
+        /* iPads (portrait and landscape) ----------- */
+        @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+            body {
+                width: 495px;
+            }
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            $('.closeall').click(function () {
+                $('.panel-collapse.in')
+                  .collapse('hide');
+            });
+            $('.openall').click(function () {
+                $('.panel-collapse:not(".in")')
+                  .collapse('show');
+            });
+            function toggleChevron(e) {
+                $(e.target)
+                    .prev('.panel-heading')
+                    .find("i.indicator")
+                    .toggleClass('glyphicon-chevron-down glyphicon-chevron-up');
+            }
+            $('#accordion').on('hidden.bs.collapse', toggleChevron);
+            $('#accordion').on('shown.bs.collapse', toggleChevron);
+
+        });
+
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <a href="#" class="btn btn-default openall">open all</a>
+        <a href="#" class="btn btn-default closeall">close all</a>
+        <hr>
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                            Collapsible Group Item #1
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseOne" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                        ONe Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                            Collapsible Group Item #2
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseTwo" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        Two Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                            Collapsible Group Item #3
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseThree" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        Three Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" ng-controller="orchestrationController">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="panel-group" id="accordion">
+                    <!-- accordion 1 -->
+                    <div class="panel panel-primary">
+
+                        <div class="panel-heading">
+                            <!-- panel-heading -->
+                            <h4 class="panel-title">
+                                <!-- title 1 -->
+                                <a data-toggle="collapse" data-parent="#accordion" href="#accordionOne">
+                                    Daily
+                                </a>
+                                <i class="indicator glyphicon glyphicon-chevron-down  pull-right"></i>
+                            </h4>
+                        </div>
+                        <!-- panel body -->
+                        <div id="accordionOne" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    <div class="col-md-3">
+                                        <label for="chkDP" class="control-label">
+                                            <input type="checkbox" id="chkDP" />
+                                            Distributed Processing
+                                        </label>
+                                        <label class="control-label">
+                                            Daily Data Extraction for : 11/30/2015
+                                        </label>
+                                        <button type="button" class="btn btn-sm btn-primary" ng-click="addETLDaily()">Add Daily</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    <div class="col-md-10">
+                                        <table class="table table-hover">
+                                            <tbody>
+                                                <tr ng-repeat="d in daily">
+                                                    <!--<td>Remove</td>-->
+                                                    <td>
+                                                        <button class="btn btn-sm btn-primary"
+                                                                ng-click="removeETLDaily(d.count)">
+                                                            <span class="ui-icon ui-icon-closethick"></span>
+                                                        </button>
+                                                    </td>
+
+                                                    <td>
+                                                        ETL Mapping
+                                                    </td>
+                                                    <td>
+                                                        <select ng-model="d.mapping"
+                                                                class="form-control"
+                                                                id="ddlETLDMapping">
+                                                            <option ng-repeat="etl in ddldailyoptions"
+                                                                    value="{{etl.name}}">
+                                                                {{etl.name}}
+                                                            </option>
+                                                        </select>
+                                                    </td>
+                                                    <td>
+                                                        Sub-Portfolio
+                                                    </td>
+                                                    <td>
+                                                        <input type="file" id="subportfolio" fileread="d.filename" class="form-control" />
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-success">
+                            <!-- accordion 2 -->
+
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <!-- title 2 -->
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#accordionTwo">
+                                        Collapsible Accordion 2
+                                    </a>
+                                </h4>
+                            </div>
+                            <!-- panel body -->
+                            <div id="accordionTwo" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    Change does not roll in on the wheels of inevitability,
+                                    but comes through continuous struggle.
+                                    And so we must straighten our backs and work for
+                                    our freedom. A man can't ride you unless your back is bent.
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

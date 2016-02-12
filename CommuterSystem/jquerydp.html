@@ -1,0 +1,41 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>jQuery UI Datepicker - Default functionality</title>
+    <script src="Scripts/jquery-2.1.4.min.js"></script>
+    <script src="Scripts/jquery-ui-1.11.4.min.js"></script>
+    <script src="Scripts/angular.min.js"></script>
+      <link href="https://code.jquery.com/ui/1.11.4/themes/black-tie/jquery-ui.css"
+          rel="stylesheet" />
+    <style>
+        .ui-datepicker-calendar {
+            display: none;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            $('.monthPicker').datepicker({
+                changeMonth: true,
+                changeYear: true,
+                showButtonPanel: true,
+                dateFormat: 'MM yy'
+            }).focus(function () {
+                var thisCalendar = $(this);
+                $('.ui-datepicker-calendar').detach();
+                $('.ui-datepicker-close').click(function () {
+                    var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+                    var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+                    thisCalendar.datepicker('setDate', new Date(year, month, 1));
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <label for="myDate">Date :</label>
+        <input name="myDate" class="monthPicker">
+    </div>
+</body>
+</html>
