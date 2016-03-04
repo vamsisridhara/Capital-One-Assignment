@@ -1,0 +1,123 @@
+﻿<!DOCTYPE html>
+<html ng-app="directivesModule">
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="Content/bootstrap.min.css" />
+    <link rel="stylesheet" href="Content/bootstrap-theme.min.css" />
+    <script src="Scripts/angular.min.js"></script>
+    <script>
+        (function () {
+            var app = angular.module('directivesModule', []);
+            app.controller('CustomersController', ['$scope', function ($scope) {
+                var counter = 0;
+                $scope.customer = {
+                    name: 'David',
+                    street: '1234 Anywhere St.'
+                };
+
+                $scope.customers = [
+                    {
+                        name: 'David',
+                        street: '1234 Anywhere St.'
+                    },
+                    {
+                        name: 'Tina',
+                        street: '1800 Crest St.'
+                    },
+                    {
+                        name: 'Michelle',
+                        street: '890 Main St.'
+                    }
+                ];
+
+                $scope.addCustomer = function () {
+                    counter++;
+                    $scope.customers.push({
+                        name: 'New Customer' + counter,
+                        street: counter + ' Cedar Point St.'
+                    });
+                };
+
+                $scope.changeData = function () {
+                    counter++;
+                    $scope.customer = {
+                        name: 'James',
+                        street: counter + ' Cedar Point St.'
+                    };
+                };
+            }]);
+            app.directive('myIsolatedScopeWithModel', function () {
+                return {
+                    scope: {
+                        customer: '=' //Two-way data binding
+                    },
+                    template: '<ul><li ng-repeat="prop in customer">{{ prop }}</li></ul>'
+                };
+            });
+            angular.module('directivesModule').directive('myIsolatedScopeWithModelAndFunction', function () {
+                return {
+                    scope: {
+                        datasource: '=',
+                        action: '&'
+                    },
+                    template: '<ul><li ng-repeat="prop in datasource">{{ prop }}</li></ul> ' +
+                              '<button ng-click="action()">Change Data</button>'
+                };
+            });
+            app.directive('mySharedScope', function () {
+                return {
+                    restrict:'EA',
+                    scope: {
+                        name: '@',
+                        street: '@'
+                    },
+                    template: 'Name: {{name}}<br /> Street: {{street}}'
+                };
+            });
+            app.directive('myDomDirective', function () {
+                return {
+                    link: function ($scope, element, attrs) {
+                        element.bind('click', function () {
+                            element.html('You clicked me!');
+                        });
+                        element.bind('mouseenter', function () {
+                            element.css('background-color', 'yellow');
+                        });
+                        element.bind('mouseleave', function () {
+                            element.css('background-color', 'white');
+                        });
+                    }
+                };
+            });
+        }());
+    </script>
+</head>
+<body>
+    <div ng-controller="CustomersController">
+        <div class="container">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div my-shared-scope name="{{customer.name}}" street="{{customer.street}}">
+                        </div>
+                        <div my-isolated-scope-with-model customer="customer"></div>
+
+                        <div my-isolated-scope-with-model-and-function
+                             datasource="customer"
+                             action="changeData()">
+                        </div>
+
+                    </div>
+                    <div class="col-md-6">
+                        <div my-dom-directive>
+                            Click Me!
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

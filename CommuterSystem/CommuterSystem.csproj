@@ -41,8 +41,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="nunit.framework, Version=2.6.0.12051, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
@@ -206,9 +206,13 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Areas\Test\TestAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CommuterController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Models\processmonitor.cs" />
+    <Compile Include="Controllers\ProcessmonitorController.cs" />
+    <Compile Include="Controllers\UserRelationController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -225,6 +229,7 @@
   <ItemGroup>
     <Content Include="accordion.html" />
     <Content Include="angcommute.html" />
+    <Content Include="angularmaterial\demo1.html" />
     <Content Include="app\app.js" />
     <Content Include="app\products\productListCtrl.js" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
@@ -269,7 +274,9 @@
     <Content Include="Content\themes\base\tabs.css" />
     <Content Include="Content\themes\base\theme.css" />
     <Content Include="Content\themes\base\tooltip.css" />
+    <Content Include="customdirectives\customDir.html" />
     <Content Include="datepicker.html" />
+    <Content Include="example.html" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -292,14 +299,20 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <Content Include="Areas\Test\Views\web.config" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />
-    <None Include="Scripts\jquery-2.1.4.intellisense.js" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="index.html" />
+    <Content Include="jqdatatable\childrows.html" />
+    <Content Include="jqdatatable\index.html" />
+    <Content Include="jqdatatable\jqresponsive.html" />
+    <Content Include="jqdatatable\objectjqtable.html" />
     <Content Include="jquerydp.html" />
     <Content Include="menusample1.html" />
     <Content Include="menusample2.html" />
@@ -309,6 +322,58 @@
     <Content Include="Menus\large_dropdown_menu.html" />
     <Content Include="Menus\MegaMenu.html" />
     <Content Include="orchestration.html" />
+    <Content Include="Responsive-2.0.2\css\responsive.bootstrap.css" />
+    <Content Include="Responsive-2.0.2\css\responsive.bootstrap.min.css" />
+    <Content Include="Responsive-2.0.2\css\responsive.dataTables.css" />
+    <Content Include="Responsive-2.0.2\css\responsive.dataTables.min.css" />
+    <Content Include="Responsive-2.0.2\css\responsive.foundation.css" />
+    <Content Include="Responsive-2.0.2\css\responsive.foundation.min.css" />
+    <Content Include="Responsive-2.0.2\css\responsive.jqueryui.css" />
+    <Content Include="Responsive-2.0.2\css\responsive.jqueryui.min.css" />
+    <Content Include="Responsive-2.0.2\Details_close.png" />
+    <Content Include="Responsive-2.0.2\Details_open.png" />
+    <Content Include="Responsive-2.0.2\examples\child-rows\column-control.html" />
+    <Content Include="Responsive-2.0.2\examples\child-rows\custom-renderer.html" />
+    <Content Include="Responsive-2.0.2\examples\child-rows\disable-child-rows.html" />
+    <Content Include="Responsive-2.0.2\examples\child-rows\index.html" />
+    <Content Include="Responsive-2.0.2\examples\child-rows\right-column.html" />
+    <Content Include="Responsive-2.0.2\examples\child-rows\whole-row-control.html" />
+    <Content Include="Responsive-2.0.2\examples\column-control\auto.html" />
+    <Content Include="Responsive-2.0.2\examples\column-control\classes.html" />
+    <Content Include="Responsive-2.0.2\examples\column-control\colreorder.html" />
+    <Content Include="Responsive-2.0.2\examples\column-control\column-visibility.html" />
+    <Content Include="Responsive-2.0.2\examples\column-control\columnPriority.html" />
+    <Content Include="Responsive-2.0.2\examples\column-control\fixedHeader.html" />
+    <Content Include="Responsive-2.0.2\examples\column-control\index.html" />
+    <Content Include="Responsive-2.0.2\examples\column-control\init-classes.html" />
+    <Content Include="Responsive-2.0.2\examples\display-types\bootstrap-modal.html" />
+    <Content Include="Responsive-2.0.2\examples\display-types\foundation-modal.html" />
+    <Content Include="Responsive-2.0.2\examples\display-types\immediateShow.html" />
+    <Content Include="Responsive-2.0.2\examples\display-types\index.html" />
+    <Content Include="Responsive-2.0.2\examples\display-types\jqueryui-modal.html" />
+    <Content Include="Responsive-2.0.2\examples\display-types\modal.html" />
+    <Content Include="Responsive-2.0.2\examples\index.html" />
+    <Content Include="Responsive-2.0.2\examples\initialisation\ajax.html" />
+    <Content Include="Responsive-2.0.2\examples\initialisation\className.html" />
+    <Content Include="Responsive-2.0.2\examples\initialisation\default.html" />
+    <Content Include="Responsive-2.0.2\examples\initialisation\index.html" />
+    <Content Include="Responsive-2.0.2\examples\initialisation\new.html" />
+    <Content Include="Responsive-2.0.2\examples\initialisation\option.html" />
+    <Content Include="Responsive-2.0.2\examples\styling\bootstrap.html" />
+    <Content Include="Responsive-2.0.2\examples\styling\compact.html" />
+    <Content Include="Responsive-2.0.2\examples\styling\foundation.html" />
+    <Content Include="Responsive-2.0.2\examples\styling\index.html" />
+    <Content Include="Responsive-2.0.2\examples\styling\jqueryui.html" />
+    <Content Include="Responsive-2.0.2\examples\styling\scrolling.html" />
+    <Content Include="Responsive-2.0.2\js\dataTables.responsive.js" />
+    <Content Include="Responsive-2.0.2\js\dataTables.responsive.min.js" />
+    <Content Include="Responsive-2.0.2\js\responsive.bootstrap.js" />
+    <Content Include="Responsive-2.0.2\js\responsive.bootstrap.min.js" />
+    <Content Include="Responsive-2.0.2\js\responsive.foundation.js" />
+    <Content Include="Responsive-2.0.2\js\responsive.foundation.min.js" />
+    <Content Include="Responsive-2.0.2\js\responsive.jqueryui.js" />
+    <Content Include="Responsive-2.0.2\js\responsive.jqueryui.min.js" />
+    <Content Include="Responsive-2.0.2\License.txt" />
     <Content Include="Scripts\angular-datepicker.js" />
     <Content Include="Scripts\angular-mocks.js" />
     <Content Include="Scripts\angular-resource.min.js" />
@@ -322,9 +387,11 @@
     <Content Include="Scripts\commuteController.js" />
     <Content Include="Scripts\commuteService.js" />
     <Content Include="Scripts\commutesystem.js" />
-    <Content Include="Scripts\jquery-2.1.4.js" />
-    <Content Include="Scripts\jquery-2.1.4.min.js" />
-    <Content Include="Scripts\jquery-2.1.4.min.map" />
+    <Content Include="Responsive-2.0.2\Readme.md" />
+    <Content Include="Scripts\dirPagination.js" />
+    <Content Include="Scripts\jquery-2.2.1.js" />
+    <Content Include="Scripts\jquery-2.2.1.min.js" />
+    <Content Include="Scripts\jquery-2.2.1.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-ui-1.11.4.js" />
     <Content Include="Scripts\jquery-ui-1.11.4.min.js" />
@@ -336,6 +403,9 @@
     <Content Include="Scripts\orchcontroller.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="uigridmodalroweditor\edit-button.html" />
+    <Content Include="uigridmodalroweditor\edit-modal.html" />
+    <Content Include="uigridmodalroweditor\index.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -351,10 +421,14 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\UserRelation\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="app\prices\" />
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Test\Controllers\" />
+    <Folder Include="Areas\Test\Models\" />
+    <Folder Include="Areas\Test\Views\Shared\" />
     <Folder Include="common\services\" />
   </ItemGroup>
   <ItemGroup>

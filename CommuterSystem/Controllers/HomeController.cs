@@ -10,9 +10,20 @@ namespace CommuterSystem.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Title = "Home Page";
-
-            return View();
+            SelectListItems items = new SelectListItems()
+            {
+                userlist = new List<SelectListItem>()
+                {
+                    new SelectListItem() {  Text = "Admin", Value="1", Selected = false},
+                    new SelectListItem() {  Text = "User", Value="2", Selected = false},
+                },
+                retailerlist = new List<SelectListItem>()
+                {
+                    new SelectListItem() {  Text = "Retailer1", Value="1", Selected = false},
+                    new SelectListItem() {  Text = "Retailer2", Value="2", Selected = false},
+                }
+            };
+            return View(items);
         }
     }
 }

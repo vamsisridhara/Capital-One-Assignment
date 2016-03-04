@@ -10,9 +10,20 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Collections;
 
 namespace ThreadingDemo
 {
+    public class Student
+    {
+        public Student()
+        {
+
+        }
+        public int studentid { get; set; }
+        public string studentname { get; set; }
+        public string address { get; set; }
+    }
     public class Product
     {
         public String Name { get; set; }
@@ -46,7 +57,13 @@ namespace ThreadingDemo
 
     //    }
     //}
-
+    public class Invoice
+    {
+        public DateTime InvoiceDate { get; set; }
+        public int InvoiceType { get; set; }
+        public decimal InvoiceAmount { get; set; }
+        public int NumberOfItems { get; set; }
+    }
     class Program
     {
         public static void WriteDate()
@@ -62,18 +79,80 @@ namespace ThreadingDemo
 
         private static IContainer Container { get; set; }
 
+        private static List<Invoice> getinvoices()
+        {
+            List<Invoice> invoiceList = new List<Invoice>
+            {
+              new Invoice()
+              {
+                InvoiceDate=new DateTime(2010,4,30),
+                InvoiceType = 1,
+                InvoiceAmount = 150,
+                NumberOfItems = 8
+              },
+              new Invoice()
+              {
+                InvoiceDate=new DateTime(2010,4,29),
+                InvoiceType = 2,
+                InvoiceAmount = 215,
+                NumberOfItems = 7
+              },
+              new Invoice()
+              {
+                InvoiceDate=new DateTime(2010,4,30),
+                InvoiceType = 1,
+                InvoiceAmount = 50,
+                NumberOfItems = 2
+              },
+              new Invoice()
+              {
+                InvoiceDate=new DateTime(2010,4,29),
+                InvoiceType = 2,
+                InvoiceAmount = 550,
+                NumberOfItems = 5
+              }
+            };
+            return invoiceList;
+        }
+
         static void Main(string[] args)
         {
-            var items = new int[2, 5] {
-                {1,2,3,4,5 },
-                { 6,7,8,9,10}
-            };
-
-            foreach (var item in items)
+            IList liststud = new ArrayList();
+            for (int count = 0; count < 100; count++)
             {
-                
+                liststud.Add(new Student() { studentid = count, address = "add" + count, studentname = "st" + count });
+            }
+            List<Student> lst = new List<Student>();
+            foreach (var item in liststud)
+            {
+                lst.Add((Student)item);
             }
 
+
+
+
+            List<Invoice> list = getinvoices();
+            var query = list.GroupBy(g => new
+            {
+                g.InvoiceDate,
+                g.InvoiceType
+            })
+            .Select(group => new
+            {
+                InvoiceDate = group.Key.InvoiceDate,
+                InvoiceType = group.Key.InvoiceType,
+                TotalAmount = group.Sum(a => a.InvoiceAmount),
+                TotalCount = group.Sum(c => c.NumberOfItems)
+            });
+
+            foreach (var item in query)
+            {
+                Console.WriteLine("Invoice Date: {0} ({1}) TotalAmount: {2} TotalCount: {3}",
+                                    item.InvoiceDate.ToShortDateString(),
+                                    item.InvoiceType,
+                                    item.TotalAmount,
+                                    item.TotalCount);
+            }
             //Autofacinitialize();
             //ThreadingInvoke();
             IList<Product> cartlist = new List<Product>()

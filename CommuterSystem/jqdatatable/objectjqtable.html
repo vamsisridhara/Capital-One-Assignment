@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <link href="../Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="../Content/bootstrap-theme.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.0.2/css/responsive.dataTables.min.css" />
+</head>
+<body>
+    <div id="container">
+        <div class="container-fluid">
+            <div class="jumbotron">
+                <div class="row">
+                    <div class="col-md-4">
+                        <button type="button" id="btnJquery" class="btn btn-primary">
+                            Load Table Jquery
+                        </button>
+                    </div>
+                </div>
+
+                <br />
+                <div id="divjquery">
+                    <table id="myDataTable1" class="table table-hover table-responsive display responsive nowrap"
+                           cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Salary</th>
+                                <th>Office</th>
+                                <th>Position</th>
+                                <th>Monitor</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script src="../Scripts/jquery-2.2.0.min.js"></script>
+<script src="../Scripts/bootstrap.min.js"></script>
+<script src="../Scripts/angular.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.0.2/js/dataTables.responsive.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#divjquery").hide();
+        $("#btnJquery").click(function () {
+            var data = [
+                        {
+                            id: 100,
+                            name: "Tiger Nixon",
+                            salary: "$3,120",
+                            office: "Edinburgh",
+                            position: "System Architect",
+                            monitor: ''
+                        },
+                        {
+                            id: 200,
+                            name: "Garrett Winters",
+                            salary: "$5,300",
+                            office: "Edinburgh",
+                            position: "Director",
+                            monitor: ''
+                        }
+            ];
+            $('#myDataTable1').DataTable({
+                "responsive": true,
+                "destroy": true,
+                "bProcessing": true,
+                "sAjaxDataProp": "",
+                "bServerSide": false,
+                "data": data,
+                "columns": [
+                    { data: 'id', visible: false },
+                    { data: 'name' },
+                    { data: 'salary' },
+                    { data: 'office' },
+                    { data: 'position' },
+                    { data: 'monitor' }
+                ],
+                "fnCreatedRow": function (nRow, aData, iDataIndex) {
+                    $('td:eq(4)', nRow)
+                        .append("<button class='btn btn-small' onclick='javascript:alert();'>Monitor</button>");
+                }
+            });
+            $("#divjquery").show();
+
+        });
+    });
+</script>

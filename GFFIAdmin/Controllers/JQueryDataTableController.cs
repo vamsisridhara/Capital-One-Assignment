@@ -82,7 +82,7 @@ namespace GFFIAdmin.Controllers
                 filteredCompanies = filteredCompanies.OrderByDescending(orderingFunction);
 
             var displayedCompanies = filteredCompanies.Skip(param.iDisplayStart).Take(param.iDisplayLength);
-            var result = from c in displayedCompanies select new[] { Convert.ToString(c.ID), c.Name, c.Address, c.Town };
+            var result = from c in displayedCompanies select new[] { Convert.ToString(c.ID), c.Name, c.Address, c.Town ,c.Dummy };
             return Json(new
             {
                 sEcho = param.sEcho,

@@ -1,0 +1,164 @@
+﻿<!DOCTYPE html>
+<html ng-app="directivesModule">
+<head>
+    <title></title>
+    <link rel="stylesheet" href="../Content/bootstrap.min.css" />
+    <link rel="stylesheet" href="../Content/bootstrap-theme.min.css" />
+    <meta charset="utf-8" />
+</head>
+<body ng-controller="CustomersController">
+    <div my-isolated-scope-with-model customer="customer"></div>
+    <div my-isolated-scope-with-model-and-function
+         datasource="customer"
+         action="changeData()">
+    </div>
+    <div isolated-scope-with-controller
+         datasource="customers"
+         add="addCustomer(name)">
+    </div>
+    <isolated-scope-with-transclusion tasks="tasks">
+        <div ng-repeat="task in tasks track by $index">
+            <strong>{{ task.title }}</strong>
+        </div>
+    </isolated-scope-with-transclusion>
+    <button type="button" id="btntasks" ng-click="gettasks()">Get Task</button>
+</body>
+</html>
+<script src="../Scripts/angular.min.js"></script>
+<script>
+    (function () {
+        var app = angular.module('directivesModule', []);
+        app.controller('CustomersController', ['$scope', function ($scope) {
+            var counter = 0;
+            $scope.customer = {
+                name: 'David',
+                street: '1234 Anywhere St.'
+            };
+            $scope.gettasks = function () {
+                alert($scope.tasks.length);
+            };
+            $scope.customers = [];
+
+            $scope.addCustomer = function (name) {
+                counter++;
+                $scope.customers.push({
+                    name: (name) ? name : 'New Customer' + counter,
+                    street: counter + ' Cedar Point St.'
+                });
+                if ($scope.customers.length > 0) {
+                    console.log('length --' + $scope.customers.length);
+                    angular.forEach($scope.customers, function (key, value) {
+                        console.log(key.name + ' ' + value);
+                    });
+                }
+            };
+
+            $scope.changeData = function () {
+                counter++;
+                $scope.customer = {
+                    name: 'James',
+                    street: counter + ' Cedar Point St.'
+                };
+            };
+        }]);
+        app.directive('isolatedScopeWithTransclusion', function () {
+            return {
+                restrict: 'E',
+                transclude: true,
+                replace: true,
+                scope: {
+                    tasks: '='
+                },
+                controller: function ($scope) {
+                    $scope.addTask = function () {
+                        if (!$scope.tasks) {
+                            $scope.tasks = [];
+                        }
+                        if ($scope.title) {
+                            $scope.tasks.push({
+                                title: $scope.title
+                            });
+                            $scope.title = '';
+                        }
+                    };
+                },
+                template: '<div>Name: <input type="text" ng-model="title" />&nbsp;' +
+                          '<button ng-click="addTask()">Add Task</button>' +
+                          '<div class="taskContainer"><br />' +
+                             '<ng-transclude></ng-transclude>' +
+                          '</div></div>'
+            };
+        });
+        app.directive('isolatedScopeWithController', function () {
+            return {
+                restrict: 'EA',
+                scope: {
+                    datasource: '=',
+                    add: '&',
+                },
+                controller: function ($scope) {
+                    $scope.addDirCustomer = function () {
+                        //Call external scope's function
+                        var name = 'New Customer Added by Directive';
+                        $scope.add({ name: name });
+
+                        //Add new customer to directive scope
+                        //$scope.datasource.push({
+                        //    name: name
+                        //});
+                    };
+                },
+                template: '<button ng-click="addDirCustomer(name)">Change Data</button>' +
+                           '<ul><li ng-repeat="cust in customers">{{ cust.name }}</li></ul>'
+            };
+        });
+        app.directive('myIsolatedScopeWithModelAndFunction', function () {
+            return {
+                scope: {
+                    datasource: '=',
+                    action: '&'
+                },
+                template: '<ul><li ng-repeat="prop in customer">{{prop}}</li></ul>' +
+                        '<button class="btn btn-primary" ng-click="action()">Click</button>'
+            };
+        });
+        app.directive('myDomDirective', function () {
+            return {
+                link: function ($scope, element, attrs) {
+                    element.bind('click', function () {
+                        element.html('You clicked me!');
+                    });
+                    element.bind('mouseenter', function () {
+                        element.css('background-color', 'yellow');
+                    });
+                    element.bind('mouseleave', function () {
+                        element.css('background-color', 'white');
+                    });
+                }
+            };
+        });
+        angular.module('directivesModule').directive('myIsolatedScopeWithModel', function () {
+            return {
+                scope: {
+                    customer: '=' //Two-way data binding
+                },
+                template: '<ul><li ng-repeat="prop in customer">{{ prop }}</li></ul>'
+            };
+        });
+        app.directive('myIsolatedScopeWithName', function () {
+            return {
+                scope: {
+                    name: '@someOtherName'
+                },
+                template: 'Name: {{ name }}'
+            };
+        });
+        app.directive('mySharedScope', function () {
+            return {
+                replace: false,
+                template: 'Name: {{customer.name}}<br /> Street: {{customer.street}}'
+            };
+        });
+
+    }());
+</script>

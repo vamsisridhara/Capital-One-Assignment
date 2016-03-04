@@ -14,7 +14,7 @@ namespace GFFIAdmin
                 url: "{controller}/{action}/{id}",
                 defaults: new
                 {
-                    controller = "JqueryDataTable",
+                    controller = "JQueryDataTable",
                     action = "Index",
                     id = UrlParameter.Optional
                 }
